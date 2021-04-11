@@ -3,8 +3,6 @@
 /storage/*.key
 /storage/logs/*
 /mailchimp-importer/config.php
-/vendor
-/common
 /.idea
 /.vagrant
 Homestead.json
