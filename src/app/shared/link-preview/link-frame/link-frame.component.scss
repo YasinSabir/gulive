@@ -1,0 +1,23 @@
+@import "variables";
+
+:host {
+  display: block;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: calc(100% - #{$material-navbar-height});
+
+  &.full-height {
+    height: 100%;
+  }
+}
+
+.ads-frame-top-host {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}

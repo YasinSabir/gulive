@@ -1,0 +1,15 @@
+<header>
+    <div *ngIf="linkGroup$ | async as linkGroup" @fadeIn>
+        <h1 class="name">
+            <a routerLink="../../" mat-icon-button>
+                <mat-icon svgIcon="arrow-back"></mat-icon>
+            </a>
+            {{linkGroup.name}} {{ 'Analytics' | trans }}
+        </h1>
+    </div>
+    <h1 *ngIf="!(linkGroup$ | async)" @fadeOut>
+        <skeleton variant="text"></skeleton>
+    </h1>
+</header>
+
+<click-charts [reports]="analytics$ | async" [endpoint]="analyticsEndpoint"></click-charts>

@@ -1,0 +1,52 @@
+<div class="datatable responsive-table">
+    <datatable-header pluralResourceName="link groups">
+        <ng-container leftContent>
+            <button mat-raised-button color="accent" permissionAwareButton="link_groups.create" (click)="showCrupdateGroupModal()" trans>New Group</button>
+            <info-popover>
+                <span trans>Group links together for easier management of links, viewing statistics for a whole group instead of individual links and ability to share all links in the group with one link.</span>
+            </info-popover>
+        </ng-container>
+        <button rightContent mat-raised-button permissionAwareButton="link_groups.delete" color="accent" (click)="maybeDeleteSelectedGroups()" trans>Delete Selected</button>
+    </datatable-header>
+    <table class="material-table">
+        <thead>
+        <tr>
+            <th table-header-checkbox></th>
+            <th table-sort-header trans>Name</th>
+            <th *ngIf="showUserColumn()" table-sort-header="user_id" trans>Owner</th>
+            <th table-sort-header="links_count" trans>Links</th>
+            <th table-sort-header="updated_at" trans>Last Updated</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let group of groups$ | async">
+            <td [table-body-checkbox]="group.id"></td>
+            <td data-label="Name">
+                <a class="link-group-name" [routerLink]="['/', group.hash]" target="_blank">{{group.name}}</a>
+            </td>
+            <td data-label="Owner" *ngIf="showUserColumn()">
+                <user-column [user]="group.user"></user-column>
+            </td>
+            <td data-label="Link Count">{{group.links_count}}</td>
+            <td data-label="Last Updated">{{group.updated_at | formattedDate}}</td>
+            <td class="edit-column">
+                <a mat-icon-button [routerLink]="[group.id, 'analytics']" [matTooltip]="'Analytics' | trans">
+                    <mat-icon svgIcon="bar-chart"></mat-icon>
+                </a>
+                <a [routerLink]="[group.id, 'links']" mat-icon-button permissionAwareButton="link_groups.update" [resource]="group" [matTooltip]="'Manage Links' | trans">
+                    <mat-icon svgIcon="list-alt"></mat-icon>
+                </a>
+                <button (click)="showCrupdateGroupModal(group)" mat-icon-button permissionAwareButton="link_groups.update" [resource]="group" [matTooltip]="'Edit' | trans">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                </button>
+                <copy-link-btn [model]="group"></copy-link-btn>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <no-results-message svgImage="marketing.svg" *ngIf="datatable.paginator.noResults$ | async">
+        <span primary-text>No link groups have been created yet</span>
+    </no-results-message>
+    <datatable-footer></datatable-footer>
+</div>

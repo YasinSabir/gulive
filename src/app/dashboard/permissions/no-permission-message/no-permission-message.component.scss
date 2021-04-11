@@ -1,0 +1,20 @@
+@import "variables";
+
+:host {
+  display: block;
+  padding: 5px 0;
+}
+
+.inner-content {
+  display: block;
+  background-color: mat-color($app-background, dialog);
+  @include mat-elevation(3);
+  border-radius: 4px;
+  padding: 10px;
+  max-width: 350px;
+  font-size: 1.3rem;
+}
+
+a {
+  white-space: nowrap;
+}

@@ -1,0 +1,141 @@
+@import "variables";
+
+:host {
+  display: block;
+  background-color: mat-color($app-background, card);
+  height: 100%;
+  overflow: hidden;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: mat-color($app-background, background);
+  height: 40px;
+  width: 100%;
+}
+
+.os-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-left: 15px;
+
+  &:nth-child(1) {
+    background-color: #d7665d;
+  }
+
+  &:nth-child(2) {
+    background-color: #deab54;
+  }
+
+  &:nth-child(3) {
+    background-color: #6fb54c;
+  }
+}
+
+.page-body {
+  padding: 25px;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: mat-color($app-background, background);
+  padding: 10px;
+  margin-bottom: 25px;
+
+  .line {
+    width: 15%;
+    margin-left: 15px;
+  }
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: mat-color($app-background, disabled-button);
+  margin-right: auto;
+}
+
+.line {
+  height: 20px;
+  border-radius: 4px;
+  background-color: mat-color($app-background, disabled-button);
+}
+
+.middle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 260px;
+  background-color: mat-color($app-background, background);
+  margin: 25px 0;
+
+  .line {
+    height: 15px;
+    margin-bottom: 5px;
+    width: 50%;
+    background-color: mat-color($app-background,   disabled-button-toggle);
+  }
+
+  .line:nth-child(1) {
+    height: 35px;
+    margin-bottom: 20px;
+    width: 65%;
+    background-color: mat-color($app-background, disabled-button);
+  }
+}
+
+.flex-container {
+  display: flex;
+}
+
+.fat-line {
+  background-color: mat-color($app-background, unselected-chip);
+  height: 35px;
+  margin-bottom: 25px;
+}
+
+.separator {
+  height: 1px;
+  background-color: mat-color($app-foreground, divider);
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.left {
+  width: 30%;
+
+  .rect {
+    height: 150px;
+    background-color: mat-color($app-background, disabled-button-toggle);
+    margin-bottom: 5px;
+  }
+
+  .rect:last-of-type {
+    height: 250px;
+  }
+
+  .line {
+    margin-bottom: 10px;
+  }
+}
+
+.right {
+  width: 70%;
+  padding-left: 25px;
+
+  .rect {
+    height: 300px;
+    margin-bottom: 35px;
+    background-color: mat-color($app-background, unselected-chip);
+  }
+
+  .line {
+    margin-bottom: 10px;
+  }
+}

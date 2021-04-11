@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h2 mat-dialog-title [transValues]="{member: this.data.member.display_name}" trans>Change :member role</h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+
+<form (ngSubmit)="confirm()" ngNativeValidate>
+
+    <mat-radio-group aria-label="Select an option" [formControl]="selectedRole">
+        <mat-radio-button [value]="12" class="role-radio-button">
+           <div class="role-info">
+               <mat-icon class="role-image" svgIcon="home"></mat-icon>
+               <div>
+                   <div class="role-name">Role Name</div>
+                   <div class="role-description">Manage everything for all admins and members</div>
+               </div>
+           </div>
+        </mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-dialog-actions>
+        <button (click)="close()" type="button" mat-button trans>Cancel</button>
+        <button type="submit" mat-raised-button color="accent" trans>Confirm</button>
+    </mat-dialog-actions>
+</form>
+
+

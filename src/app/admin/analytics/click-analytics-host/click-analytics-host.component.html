@@ -1,0 +1,4 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="loading$ | async"></mat-progress-bar>
+<analytics-header [data]="headerData"></analytics-header>
+
+<click-charts [reports]="linkStats$ | async" endpoint="admin/analytics/stats?channel=clicks"></click-charts>

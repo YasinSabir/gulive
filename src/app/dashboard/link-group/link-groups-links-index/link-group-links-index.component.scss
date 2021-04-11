@@ -1,0 +1,22 @@
+@import "variables";
+
+header {
+  position: relative;
+}
+
+h1 {
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin: 0 0 10px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+skeleton {
+  max-width: 350px;
+}
+
+.mat-icon-button {
+  color: mat-color($app-foreground, icon);
+  vertical-align: middle;
+}

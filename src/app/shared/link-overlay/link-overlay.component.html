@@ -1,0 +1,9 @@
+<ng-container *ngIf="overlay">
+    <div class="message">{{overlay.message}}</div>
+
+    <a class="main-button" mat-raised-button *ngIf="overlay.btn_text" [href]="overlay.btn_link">{{overlay.btn_text}}</a>
+
+    <div class="ribbon-wrapper" *ngIf="overlay.label">
+        <div class="ribbon">{{overlay.label}}</div>
+    </div>
+</ng-container>

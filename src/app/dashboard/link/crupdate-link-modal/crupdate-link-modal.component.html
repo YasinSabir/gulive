@@ -1,0 +1,52 @@
+<div class="modal-header">
+    <h2 mat-dialog-title>
+        <span *ngIf="updating$ | async; else creating" trans>Update Link</span>
+        <ng-template #creating><span trans>Creating Link</span></ng-template>
+    </h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+
+<form (ngSubmit)="confirm()" ngNativeValidate>
+    <mat-dialog-content>
+        <ng-container *ngIf="linkForm.errors$ | async as errors" [formGroup]="linkForm.formGroup">
+            <div *ngIf="multiple$ | async; else single" class="input-container">
+                <label for="link-dialog-multiple-urls" trans>Multiple URLs (one per line)</label>
+                <textarea name="link-dialog-multiple-urls" id="link-dialog-multiple-urls" rows="10" formControlName="multiple_urls"></textarea>
+                <div class="error" *ngIf="errors.multiple_urls">{{errors.multiple_urls}}</div>
+            </div>
+            <ng-template #single>
+                <div class="input-container link-input-container">
+                    <label for="link-dialog-long-url" class="hidden" trans>Paste long url</label>
+                    <div class="input-with-action">
+                        <input type="text" id="link-dialog-long-url" autocomplete="off" formControlName="long_url" placeholder="Enter long url..." trans-placeholder minlength="3" maxlength="250" required>
+                        <ng-container *ngIf="settings.get('links.enable_type')">
+                            <button mat-flat-button class="type-button" color="gray" type="button" [matMenuTriggerFor]="linkTypeMenu.matMenu">
+                                <span trans>{{typeViewName()}}</span>
+                                <mat-icon svgIcon="arrow-drop-down"></mat-icon>
+                            </button>
+                            <link-type-menu [linkOptions]="linkOptions$ | async" #linkTypeMenu formControlName="type"></link-type-menu>
+                        </ng-container>
+                    </div>
+                    <div class="error" *ngIf="errors.long_url">{{errors.long_url}}</div>
+                </div>
+            </ng-template>
+            <div class="actions">
+                <button type="button" class="advanced-options-btn" mat-button (click)="toggleOptions()">
+                    <mat-icon svgIcon="settings"></mat-icon>
+                    <span trans>Advanced Options</span>
+                </button>
+            </div>
+
+            <link-options-form [@bodyExpansion]="optionsVisible$ | async" [linkOptions]="linkOptions$ | async"></link-options-form>
+        </ng-container>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <mat-slide-toggle class="multiple-toggle" *ngIf="!data.link" (change)="toggleMultiple($event)" [checked]="false" trans>Multiple</mat-slide-toggle>
+
+        <button (click)="close()" type="button" mat-button trans>Cancel</button>
+        <button type="submit" mat-raised-button color="accent" [disabled]="loading$ | async" trans>Confirm</button>
+    </mat-dialog-actions>
+</form>

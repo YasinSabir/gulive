@@ -1,0 +1,72 @@
+<div class="left">
+    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="loading$ | async"></mat-progress-bar>
+    <form (ngSubmit)="confirm()" [formGroup]="form" ngNativeValidate>
+        <mat-tab-group color="accent" animationDuration="200ms">
+            <mat-tab [label]="'Content' | trans">
+                <div class="many-inputs tab-body-wrapper">
+                    <div class="input-container">
+                        <label for="name" trans>Name</label>
+                        <input type="text" id="name" formControlName="name" required>
+                        <div class="error" *ngIf="errors.name">{{errors.name}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="position" trans>Position</label>
+                        <select id="position" formControlName="position" required>
+                            <option value="top-left" trans>Top Left</option>
+                            <option value="top-right" trans>Top Right</option>
+                            <option value="bottom-left" trans>Bottom Left</option>
+                            <option value="bottom-right" trans>Bottom Right</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="link-overlay-theme" trans>Theme</label>
+                        <select id="link-overlay-theme" formControlName="theme" required>
+                            <option value="default" trans>Default</option>
+                            <option value="full-width" trans>Full Width</option>
+                            <option value="rounded" trans>Rounded</option>
+                            <option value="pill" trans>Pill</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label for="message" trans>Message</label>
+                        <textarea id="message" formControlName="message" maxlength="200" required></textarea>
+                        <div class="error" *ngIf="errors.message">{{errors.message}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="label" trans>Label</label>
+                        <input type="text" id="label" formControlName="label" maxlength="8">
+                        <div class="error" *ngIf="errors.label">{{errors.label}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="btn_link" trans>Button Link</label>
+                        <input type="url" id="btn_link" formControlName="btn_link">
+                        <div class="error" *ngIf="errors.btn_link">{{errors.btn_link}}</div>
+                    </div>
+                    <div class="input-container">
+                        <label for="btn_text" trans>Button Text</label>
+                        <input type="text" id="btn_text" formControlName="btn_text" maxlength="30">
+                        <div class="error" *ngIf="errors.btn_text">{{errors.btn_text}}</div>
+                    </div>
+                    <button mat-raised-button color="accent" [disabled]="loading$ | async" trans>
+                        {{overlay ? 'Update' : 'Create'}}
+                    </button>
+                </div>
+            </mat-tab>
+            <mat-tab [label]="'Colors' | trans">
+                <div class="tab-body-wrapper">
+                    <div formGroupName="colors">
+                        <color-picker-input *ngFor="let pair of colorControls() | keyvalue" [formControlName]="pair.key">{{colorViewName(pair.key)}}</color-picker-input>
+                    </div>
+                    <button mat-raised-button color="accent" [disabled]="loading$ | async" trans>
+                        {{overlay ? 'Update' : 'Create'}}
+                    </button>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </form>
+</div>
+<div class="right">
+    <generic-page-preview></generic-page-preview>
+    <link-overlay [overlay]="form.valueChanges | async"></link-overlay>
+    <div class="cdk-overlay-backdrop cdk-overlay-backdrop-showing cdk-overlay-dark-backdrop"></div>
+</div>

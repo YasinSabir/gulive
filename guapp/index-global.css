@@ -1,0 +1,614 @@
+/*color*/
+.yellow{ color:#efca77; }
+#main-apply{
+  padding:100px 30px;
+  min-height: 600px;
+  background-image: url(https://storage.googleapis.com/gal-uploads/1/2020/12/wavy-buff-cropped-01.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:bottom right;
+}
+
+#main-apply .row{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.sec-wrapper{
+  max-width: 1366px;
+  margin:auto;
+}
+
+div h1, div h2, div h3, div h4, div h5,div h6{
+  color:#0F4D81;
+  font-family: "proxima-nova", Sans-serif;
+}
+div h1{
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 60px;
+}
+
+div h2{
+  font-size: 60px;
+  line-height: 40px;
+}
+div h3{
+  font-size:48px;
+  font-weight: 700;
+  line-height: 40px;
+}
+div h4{
+  font-size:36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+div img{
+  box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+  -webkit-box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+}
+div p, div li{
+  color:#595F6F;
+  font-size: 20px;
+  font-family: "proxima-nova", Sans-serif;
+  margin-bottom:0px;
+  font-weight: 400;
+}
+div label{
+  font-family: "proxima-nova", Sans-serif;
+  color:#595F6F;
+}
+div button{
+  border-radius: 5px;
+  padding: 16px 37px 14px 14px;
+  transition: ease 0.2s;
+}
+div li{font-family: "proxima-nova", Sans-serif;}
+div a{
+  font-size:20px;
+  cursor: pointer;
+  color:#C2185B;
+}
+div .form-control{
+  border: 1px solid #0F4D81;
+  height: 45px;
+}
+div a:hover{
+  text-decoration: none;
+  color:#C2185B;
+}
+div a.button{
+  color: #C2185B;
+  border-radius: 5px;
+  padding: 16px 37px 14px 14px;
+  transition: ease 0.2s;
+  -webkit-transition: ease 0.2s;
+  -moz-transition: ease 0.2s;
+  -o-transition: ease 0.2s;
+}
+div button, div button.btn-link{
+  font-family: "proxima-nova", Sans-serif;
+}
+.btn-link
+div a.button:hover{
+  text-decoration: none;
+  color: #C2185B;
+}
+.mw-row-full{
+  max-width: 1366px;
+  margin:auto;
+}
+.mw-400{
+  max-width: 400px;
+}
+.mw-500{
+  max-width: 500px;
+}
+.mw-600{
+  max-width: 600px;
+}
+.mw-700{
+  max-width: 700px;
+}
+.mw-800{
+  max-width: 800px;
+}
+.light-br{
+  background-color:#F7F8FB !important;
+}
+.section{
+  background-color:white;
+  padding:100px 30px;
+}
+
+.black_button--gray{
+  color:#707070 ;
+  border:1px solid #E2E6ED ;
+  background-color: #E2E6ED ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  position: relative;
+}
+.black_button--gray:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.black_button--gray:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape_light@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.black_button--gray:hover{
+  background-color:#0F4D81 ;
+  color: #F3F2F1 ;
+  border:1px solid #0F4D81 ;
+}
+
+.blue_button--gray{
+  color:#0F4D81 ;
+  border:1px solid #E2E6ED ;
+  background-color: #E2E6ED ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  position: relative;
+}
+.blue_button--gray:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.blue_button--gray:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape_light@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.blue_button--gray:hover{
+  background-color:#0F4D81 ;
+  color: #F3F2F1 ;
+  border: 1px solid #0F4D81 ;
+}
+
+.trans-btn__blue{
+  color:#0F4D81 !important;
+  border:1px solid #0F4D81 ;
+  background-color: rgba(0,0,0,0) ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  position: relative;
+}
+.trans-btn__blue:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.trans-btn__blue:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape_light@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.trans-btn__blue:hover{
+  background-color:#0F4D81;
+  color: #F3F2F1 !important;
+  border: 1px solid #0F4D81 ;
+}
+
+.blue-btn__white{
+  color: #F3F2F1 !important;
+  border: 1px solid #0F4D81 ;
+  background-color: #0F4D81 ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  position: relative;
+}
+.blue-btn__white:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape_light@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.blue-btn__white:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow_Yel@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.blue-btn__white:hover{
+  background-color:#0F4D81 ;
+  color:#EFCA77  !important;
+  border:1px solid #0F4D81 ;
+}
+
+.white-btn__trans{
+  color:white ;
+  border:1px solid white ;
+  background-color: rgba(0,0,0,0) ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  position: relative;
+}
+
+.white-btn__trans:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow@2x-1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.white-btn__trans:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.white-btn__trans:hover{
+  background-color:white ;
+  color:#0F4D81 ;
+  border:1px solid white ;
+}
+
+.pink_button{
+  padding: 0 ;
+  border: none ;
+  font-size: 16px ;
+  font-weight: 700 ;
+  text-transform: uppercase ;
+  color: #C2185B ;
+  line-height: 25px ;
+  background: transparent ;
+}
+.pink_button:hover {
+  color: #7C0E3E ;
+}
+
+.yellow_button{
+  padding: 0 ;
+  border: none ;
+  font-size: 16px ;
+  font-weight: 700 ;
+  text-transform: uppercase ;
+  color: #EFCA77 ;
+  line-height: 25px ;
+  background: transparent ;
+}
+.yellow_button:hover {
+  color: #7C0E3E ;
+}
+
+.blue_button--gray--whitehvr{
+  color:#0F4D81 ;
+  border:1px solid #E2E6ED ;
+  background-color: #E2E6ED ;
+  text-transform: uppercase ;
+  line-height: 19px ;
+  font-size: 16px ;
+  font-weight: 500 ;
+  padding: 16px 37px 14px 14px ;
+  border: 1px solid #F3F2F1 ;
+  position: relative;
+}
+
+.blue_button--gray--whitehvr:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Right-Arrow@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.blue_button--gray--whitehvr:hover:after {
+  content: '';
+  width: 8px;
+  height: 14px;
+  background: url(https://brycechapman.com/wp-content/uploads/2020/12/Shape_light@2x.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.blue_button--gray--whitehvr:hover{
+  background-color:rgba(0,0,0,0) ;
+  color: #F3F2F1 ;
+  border: 1px solid #F3F2F1 ;
+}
+.cta-row p{
+  margin-bottom: 30px;
+}
+.cta-row .first{
+  padding-right: 60px;
+}
+
+@media (max-width: 1024px){
+  div h1{
+    font-size: 36px;
+    line-height: 40px;
+  }
+  div h2{
+    font-size: 36px;
+  }
+  div h3{
+    font-size: 36px;
+  }
+  div h4, div h5, div h6{}
+  #main-apply{
+    background-position:200% 400%;
+  }
+}
+@media (max-width: 768px){
+  .cta-row .second{
+    margin-top:60px;
+  }
+}
+@media (max-width: 576px){
+  .section{
+    padding:50px 30px;
+  }
+  div h1{
+    font-size: 36px;
+  }
+  div h2{
+    font-size: 36px;
+  }
+  div h3{
+    font-size: 36px;
+  }
+  div h4, div h5, div h6{}
+  #main-apply{
+    background-size:0px;
+  }
+  .cta-row .first{
+    padding-right: 30px;
+  }
+  .counselors img{
+    padding-bottom: 30px;
+  }
+}
+
+/* Apply 2 page CSS */
+.section.counselors{
+  background-image: url(https://storage.googleapis.com/gal-uploads/1/2020/12/Rectangle-81@2x.png);
+  background-size: 35%;
+  background-position: 100% 80%;
+  background-repeat: no-repeat;
+}
+.section.counselors h2{
+  font-weight: 700;
+}
+.section.counselors img{
+  max-width: 100%;
+  box-shadow: none;
+}
+.section.counselors .name{
+  font-weight: 600;
+}
+.section.counselors a{
+color:#0F4D81;
+}
+.section.counselors a:hover{
+  color:#595F6F;
+}
+.section.counselors i{
+  font-size: 18px;
+  margin-right: 5px;
+}
+.section.faqs{
+
+}
+.section.faqs h3{
+  font-weight: 700;
+}
+.section.faqs .card{
+  font-weight: 700;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.section.faqs .card-header{
+}
+.section.faqs .btn-link{
+  color:#0F4D86;
+  font-weight: 600;
+  font-size: 20px;
+}
+.section.faqs .btn-link:hover{
+  text-decoration: none;
+  color:#595F6F;
+}
+.section.faqs .btn-link:focus{
+  text-decoration: none;
+}
+.section.faqs .fa{
+  margin-right: 10px;
+}
+.section.about{
+  background-image: url(https://storage.googleapis.com/gal-uploads/1/2020/12/wavy-gray-cropped-01.svg);
+  background-size: contact;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* UG Event */
+.gray{color:#595F6F;}
+#main-events{
+  padding-left: 30px;
+  padding-right: 30px;
+  background-image: url(https://storage.googleapis.com/gal-uploads/1/2020/12/wavy-buff-cropped-01.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:400px 100%;
+}
+@media (max-width: 1024px){
+  #main-events{
+    background-position:100% 100%;
+  }
+}
+.events-banner img{
+  max-width: 100%;
+  border-radius: 5px;
+}
+.banner-info{
+  margin-left:20%;
+  margin-right: 20%;
+  margin-top: -50px;
+  background-color: white;
+  position: relative;
+  padding:15px 20px;
+  box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+  -webkit-box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+  -moz-box-shadow: 5px 5px 35px 5px rgb(0 0 0 / 10%);
+}
+@media (max-width: 1160px){
+  .banner-info{
+    margin-left:10%;
+    margin-right: 10%;
+  }
+}
+@media (max-width: 768px){
+  .events-banner{
+    margin-top: 80px;
+  }
+}
+@media (max-width: 576px){
+  .banner-info{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: -20px
+  }
+}
+.banner-info p{
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+}
+.banner-info h1{
+  font-size: 36px;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+.info-cards{
+
+}
+.info-cards .col{}
+.info-cards img{
+  max-width: 100%;
+  border-radius: 5px;
+}
+.info-cards .heading{
+  font-size: 36px;
+}
+.info-cards p{
+  font-size: 18px;
+}
+#sidebar .heading{
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+#sidebar .event-sidebar-card{
+  margin-bottom: 20px;
+}
+#sidebar .event-sidebar-card a{
+  font-size: 20px;
+  line-height: 1.2em;
+}
+#sidebar .event-sidebar-card p.description{
+  font-size: 16px;
+}
+#sidebar .event-sidebar-card p.date{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (min-width: 1025px){
+  .sec-wrapper{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (max-width: 1024px){
+  .section.counselors{
+    background-position: 100% 100%;
+  }
+}
+@media (max-width: 576px){
+  .section.counselors{
+    background-size: 70%;
+  }
+}
+/* End Apply 2 Page CSS */

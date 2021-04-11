@@ -1,0 +1,28 @@
+@import "variables";
+
+.favicon-img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.long-url {
+  display: block;
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: inherit;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.short-url {
+  display: block;
+  color: mat-color($app-foreground, secondary-text);
+  font-size: 1.3rem;
+  white-space: nowrap;
+
+  a {
+    color: inherit;
+  }
+}

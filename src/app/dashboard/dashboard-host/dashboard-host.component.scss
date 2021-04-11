@@ -1,0 +1,59 @@
+@import "variables";
+
+material-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.mat-sidenav-container {
+  padding-top: $material-navbar-height;
+}
+
+.mat-sidenav-content {
+  padding: 25px;
+  background-color: mat-color($app-background, background);
+  min-height: calc(100vh - #{$material-navbar-height});
+}
+
+.mat-sidenav {
+  width: 225px;
+  padding: 26px 8px 16px;
+}
+
+.sidebar-compact {
+  width: 80px;
+}
+
+.sidenav-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+workspace-selector {
+  min-width: 200px;
+  height: 100%;
+  margin-left: 5px;
+  margin-right: auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+
+  @media only screen and (max-width: $medium) {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  material-navbar ::ng-deep .right-side-actions {
+    margin-left: 0;
+  }
+}
+
+.mat-drawer-container {
+  background-color: mat-color($app-background, dialog);
+}
+
+.ads-dashboard-top-host {
+  margin-bottom: 25px;
+}

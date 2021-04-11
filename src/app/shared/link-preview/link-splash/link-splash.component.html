@@ -1,0 +1,26 @@
+<material-navbar></material-navbar>
+
+<div class="container">
+    <ad-host slot="ads.splash.top"></ad-host>
+
+    <div class="link-panel">
+        <img [src]="imgUrl()" class="link-image" alt="Link preview image">
+        <div class="info">
+            <h1 trans>You are about to be redirected to another page.</h1>
+            <div class="actions">
+                <button mat-raised-button color="accent" *ngIf="(timeout$ | async) > 0; else timeoutDone">
+                    <span trans>Redirect In</span> {{ timeout$ | async }}
+                </button>
+                <ng-template #timeoutDone>
+                    <button mat-raised-button color="accent" (click)="redirect()" trans>Go to link</button>
+                </ng-template>
+                <a routerLink="/" mat-button trans>Take Me Back</a>
+            </div>
+            <p class="info-text" trans>You are about to be redirected to another page. We are not responsible for the content of that page or the consequences it may have on you.</p>
+        </div>
+    </div>
+
+    <ad-host slot="ads.splash.bottom"></ad-host>
+
+    <app-footer></app-footer>
+</div>

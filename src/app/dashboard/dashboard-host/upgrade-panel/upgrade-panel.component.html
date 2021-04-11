@@ -1,0 +1,19 @@
+<ng-container *ngIf="settings.get('billing.enable')">
+    <div class="upgrade-panel" *ngIf="linkUsage.response$ | async as data">
+        <ng-container *ngIf="data.usage.links">
+            <mat-progress-bar mode="determinate" color="accent" [value]="(data.usage.links.used / data.usage.links.total) * 100"></mat-progress-bar>
+
+            <div class="usage-info">
+                <div class="text" [transValues]="{number: data.usage.links.used, total: data.usage.links.total || 'Unlimited'}" trans>
+                    :number of :total links created
+                </div>
+                <mat-icon #infoIcon svgIcon="info" class="info-icon" (click)="togglePopover()" (mouseenter)="openPopover()" (mouseleave)="closePopover()"></mat-icon>
+            </div>
+        </ng-container>
+
+        <div class="upgrade-link-container" *ngIf="data.userOwnsWorkspace">
+            <a routerLink="/billing/upgrade" *ngIf="!compact" target="_blank" trans>Upgrade Account</a>
+            <a routerLink="/billing/upgrade" class="compact-link" *ngIf="compact" target="_blank" trans>Upgrade</a>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,45 @@
+@import "variables";
+
+:host {
+  display: flex;
+  max-height: calc(100vh - #{$material-navbar-height});
+  margin: -25px;
+}
+
+.left, .right {
+  flex: 1 1 auto;
+}
+
+.left {
+  max-width: 300px;
+  padding: 10px 20px 20px;
+  background-color: mat-color($app-background, card);
+  border-right: 1px solid mat-color($app-foreground, divider);
+  overflow: auto;
+  @include mat-elevation(2);
+  position: relative;
+  z-index: 1;
+}
+
+.right {
+  position: relative;
+}
+
+.mat-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+::ng-deep crupdate-link-overlay-page .mat-tab-label {
+  width: 50%;
+  min-width: initial;
+}
+
+.tab-body-wrapper {
+  padding-top: 15px;
+}
+
+link-overlay {
+  z-index: 1001;
+}

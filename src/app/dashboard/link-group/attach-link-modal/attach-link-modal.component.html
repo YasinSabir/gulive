@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h2 mat-dialog-title trans>Attach Existing Link</h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div class="input-container">
+        <input type="text" placeholder="Search for links..." [formControl]="searchControl">
+        <loading-indicator [isVisible]="loading$ | async" class="small"></loading-indicator>
+    </div>
+
+    <div class="links" *ngIf="links$ | async as links">
+        <div class="link" *ngFor="let link of links" (click)="confirm(link)">
+            <img [src]="favicon(link.long_url)">
+            <button class="meta overflow-hidden no-style" [disabled]="loading$ | async">
+                <span class="long-url overflow-hidden">{{link.long_url}}</span>
+                <span class="short-url overflow-hidden">{{link.short_url}}</span>
+            </button>
+        </div>
+        <div class="link" *ngIf="!links.length">
+            <no-results-message [horizontal]="true">
+                <span secondary-text trans>Could not find any links matching this query.</span>
+            </no-results-message>
+        </div>
+    </div>
+</mat-dialog-content>

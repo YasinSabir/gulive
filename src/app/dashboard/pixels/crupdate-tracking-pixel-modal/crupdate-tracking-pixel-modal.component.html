@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h2 mat-dialog-title>
+        <span *ngIf="data.pixel; else creating" trans>Update Pixel</span>
+        <ng-template #creating><span trans>Create New Pixel</span></ng-template>
+    </h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+
+<form (ngSubmit)="confirm()" [formGroup]="form" ngNativeValidate>
+    <mat-dialog-content class="many-inputs" *ngIf="errors$ | async as errors">
+        <div class="input-container">
+            <label for="name" trans>Name</label>
+            <input type="text" id="name" formControlName="name" required>
+            <div class="error" *ngIf="errors.name">{{errors.name}}</div>
+        </div>
+        <div class="input-container">
+            <label for="type" trans>Type</label>
+            <select id="type" formControlName="type" class="type-select" required>
+                <option [value]="type.name" *ngFor="let type of types">{{viewTypeName(type.name)}}</option>
+            </select>
+        </div>
+        <ng-container *ngIf="selectedType$ | async as selectedType">
+            <div class="input-container" *ngIf="selectedType.name !== 'custom'">
+                <label for="pixel_id" trans>Pixel ID</label>
+                <input id="pixel_id" [type]="selectedType.type" formControlName="pixel_id" [pattern]="selectedType.pattern" required>
+                <div class="error" *ngIf="errors.pixel_id">{{errors.pixel_id}}</div>
+            </div>
+            
+            <div class="many-inputs" *ngIf="selectedType.name === 'custom'">
+                <div class="input-container">
+                    <label for="head-code" trans>Custom Code for Page Head</label>
+                    <textarea name="head-code" id="head-code" rows="10" formControlName="head_code"></textarea>
+                </div>
+                <div class="input-container">
+                    <label for="body-code" trans>Custom Code for Page Body</label>
+                    <textarea name="body-code" id="body-code" rows="10" formControlName="body_code"></textarea>
+                </div>
+            </div>
+        </ng-container>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button (click)="close()" type="button" mat-button trans>Cancel</button>
+        <button type="submit" mat-raised-button color="accent" [disabled]="loading$ | async" trans>
+            <span *ngIf="data.pixel">Update</span>
+            <span *ngIf="!data.pixel">Create</span>
+        </button>
+    </mat-dialog-actions>
+</form>

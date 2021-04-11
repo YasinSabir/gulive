@@ -1,0 +1,10 @@
+<button mat-icon-button class="facebook-btn" (click)="shareUsing('facebook')" [matTooltip]="'Share on facebook' | trans">
+    <mat-icon svgIcon="facebook"></mat-icon>
+</button>
+<button mat-icon-button class="twitter-btn" (click)="shareUsing('twitter')" [matTooltip]="'Share on twitter' | trans">
+    <mat-icon svgIcon="twitter"></mat-icon>
+</button>
+<copy-link-btn [model]="link" *ngIf="showCopyBtn"></copy-link-btn>
+<button mat-icon-button class="qr-btn" (click)="copyQr()" [matTooltip]="'Copy QR code' | trans">
+    <mat-icon svgIcon="qr"></mat-icon>
+</button>

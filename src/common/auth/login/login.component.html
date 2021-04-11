@@ -1,0 +1,77 @@
+<auth-page>
+    <form (ngSubmit)="login()" [formGroup]="form" *ngIf="errResponse$ | async as messages" ngNativeValidate>
+        <!--        <div class="header" [transValues]="{siteName: settings.get('branding.site_name')}" trans>-->
+        <!--            {{ route.snapshot.data.message || 'Sign in to your account' }}-->
+        <!--        </div>-->
+        <a class="logo" [routerLink]="['/']"><img [src]="logoUrl()" alt="logo"></a>
+
+<!--        <div class="many-inputs">-->
+<!--            <div class="input-container">-->
+<!--                <div class="general-error" *ngIf="messages.general">-->
+<!--                    {{messages.general}}-->
+<!--                </div>-->
+<!--                <label for="login-email" class="hidden" trans>Email</label>-->
+<!--                <input type="email" placeholder="Email" formControlName="email" id="login-email" required>-->
+<!--            </div>-->
+<!--            <div class="input-container">-->
+<!--                <div class="label-with-action custom-forgot-label-div">-->
+<!--                    <label for="login-password" class="hidden" trans>Password</label>-->
+<!--                    &lt;!&ndash;                    <a class="forgot-password custom-forgot-label hidden" [routerLink]="['/forgot-password']" tabindex="-1" trans>Forgot your password?</a>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <input type="password" placeholder="Password" formControlName="password" id="login-password" required>-->
+<!--                <a class="forgot-password" [routerLink]="['/forgot-password']"><span trans="">Forgot</span>?</a>-->
+<!--                <p class="error big-error" *ngIf="messages.password">-->
+<!--                    <mat-icon svgIcon="warning"></mat-icon>-->
+<!--                    <span>{{messages.password}}</span>-->
+<!--                </p>-->
+
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="custom-login-section">-->
+<!--            <div class="custom-remember-div">-->
+<!--                <mat-checkbox name="remember-me" class="remember-me" color="accent" formControlName="remember" trans>Remember Me</mat-checkbox>-->
+<!--            </div>-->
+<!--            <div class="custom-login-div">-->
+<!--                <button mat-raised-button class="primary-button custom-login-btn" color="accent" type="submit" [disabled]="loading$ | async" trans>Login</button>-->
+<!--                <loading-indicator [isVisible]="loading$ | async" class="overlay"></loading-indicator>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="info-row">-->
+<!--            <ng-container *ngIf="infoRowTarget === 'Register here' && !settings.get('registration.disable')">-->
+<!--                <span class="color-secondary" trans>Don't have an account?</span>&ngsp;-->
+<!--                <a class="register-link" [routerLink]="['/register']" trans>Register here</a>-->
+<!--            </ng-container>-->
+
+<!--            <ng-container *ngIf="infoRowTarget === 'signin'">-->
+<!--                <span trans>Already have an account?</span>&ngsp;-->
+<!--                <a [routerLink]="['/login']" trans>Sign in.</a>-->
+<!--            </ng-container>-->
+<!--        </div>-->
+
+        <ng-container *ngIf="!settings.get('registration.disable')">
+            <button type="button" class="no-style alternative-signin-method" (click)="socialAuth.loginWith('envato')" *ngIf="settings.get('social.envato.enable'); else defaultSocialAuth">
+                <mat-icon svgIcon="envato-custom"></mat-icon>
+                <span trans>Sign in with Envato instead</span>
+            </button>
+            <ng-template #defaultSocialAuth>
+                <div class="social-icons center">
+                    <button type="button" (click)="socialAuth.loginWith('microsoft')" class="primary-button" color="accent"
+                            mat-raised-button>Microsoft SignIn
+                    </button>
+                    <loading-indicator [isVisible]="loading$ | async" class="overlay"></loading-indicator>
+<!--                    <button type="button" mat-icon-button (click)="socialAuth.loginWith('facebook')" *ngIf="settings.get('social.facebook.enable')" class="social-icon no-style facebook" [matTooltip]="'Login with facebook' | trans">-->
+<!--                        <mat-icon svgIcon="facebook"></mat-icon>-->
+<!--                    </button>-->
+<!--                    <button type="button" mat-icon-button (click)="socialAuth.loginWith('google')" *ngIf="settings.get('social.google.enable')" class="social-icon no-style google" [matTooltip]="'Login with google' | trans">-->
+<!--                        <mat-icon svgIcon="google"></mat-icon>-->
+<!--                    </button>-->
+<!--                    <button type="button" mat-icon-button (click)="socialAuth.loginWith('twitter')" *ngIf="settings.get('social.twitter.enable')" class="social-icon no-style twitter" [matTooltip]="'Login with twitter' | trans">-->
+<!--                        <mat-icon svgIcon="twitter"></mat-icon>-->
+<!--                    </button>-->
+                </div>
+            </ng-template>
+        </ng-container>
+    </form>
+</auth-page>

@@ -1,0 +1,73 @@
+@import "variables";
+
+:host {
+  display: block;
+  max-width: 900px;
+  margin: auto;
+}
+
+.input-container {
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+input {
+  height: 60px;
+  border-color: transparent;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 2.2rem;
+  padding-left: 30px;
+}
+
+.submit-button[disabled] {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media only screen and (min-width: $medium) {
+  .mat-flat-button {
+    min-width: 200px;
+    font-size: 1.6rem;
+  }
+}
+
+.extraFields {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+
+.extra-advance-button {
+  margin-top: 10px;
+}
+
+input.custom-input-style {
+  display: block;
+  height: 40px;
+  color: lightslategray;
+  border: 1px solid var(--be-divider-default);
+  padding: 12px;
+  margin: 0 auto;
+  outline-width: 1px;
+  line-height: normal;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.extraFields .input-container {
+  border-radius: 0px;
+}
+
+.second-group{
+  margin-top: 10px;
+}
+
+label.custom-label {
+  text-align: left;
+}

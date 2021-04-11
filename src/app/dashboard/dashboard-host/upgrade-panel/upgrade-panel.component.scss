@@ -1,0 +1,46 @@
+@import "variables";
+
+:host {
+  margin-top: auto;
+  padding: 15px 15px 0;
+}
+
+.usage-info {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 1.3rem;
+  color: mat-color($app-foreground, secondary-text);
+
+  .info-icon {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+
+    &:hover {
+      color: mat-color($app-primary, default);
+    }
+  }
+}
+
+:host-context(.compact) {
+  padding: 15px 5px 0;
+
+  .mat-progress-bar {
+    display: none;
+  }
+
+  .text {
+    display: none;
+  }
+
+  .info-icon {
+    margin-right: auto;
+  }
+
+  .link-container {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,42 @@
+<div [formGroup]="form" class="many-inputs">
+    <div class="input-container">
+        <label for="link-status-filter" trans>Status</label>
+        <select id="link-status-filter" formControlName="status">
+            <option [ngValue]="null" trans>All</option>
+            <option value="enabled" trans>Enabled</option>
+            <option value="disabled" trans>Disabled</option>
+            <option value="expired" trans>Expired</option>
+        </select>
+    </div>
+
+    <div class="input-container">
+        <label for="link-password-filter" trans>Password</label>
+        <select id="link-password-filter" formControlName="password">
+            <option [ngValue]="null" trans>All</option>
+            <option [ngValue]="true" trans>With Password</option>
+            <option [ngValue]="false" trans>Without Password</option>
+        </select>
+    </div>
+
+    <div class="input-container">
+        <label for="link-expiration-filter" trans>Expiration Date</label>
+        <select id="link-expiration-filter" formControlName="expiration">
+            <option [ngValue]="null" trans>All</option>
+            <option [ngValue]="true" trans>With Expiration Date</option>
+            <option [ngValue]="false" trans>Without Expiration Date</option>
+        </select>
+    </div>
+
+    <div class="input-container">
+        <label for="link-type-filter" trans>Type</label>
+        <select id="link-type-filter" formControlName="type">
+            <option [ngValue]="null" trans>All</option>
+            <option value="direct" trans>Direct</option>
+            <option value="overlay" trans>Overlay</option>
+            <option value="frame" trans>Frame</option>
+            <option value="link_page" trans>Custom Link Page</option>
+        </select>
+    </div>
+
+    <select-user-input formControlName="user_id" *ngIf="showUserFilter"></select-user-input>
+</div>

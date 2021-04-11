@@ -1,0 +1,13 @@
+<ng-container *ngIf="data$ | async as data">
+    <header>
+        <img [src]="data.link.long_url | favicon" alt="link favicon">
+        <a [href]="data.link.long_url" class="long-url" target="_blank">{{data.link.long_url}}</a>
+<!--        <a mat-icon-button routerLink="/dashboard/links" [queryParams]="{link_id: data.link.id}" class="edit-btn">-->
+<!--            <mat-icon svgIcon="edit"></mat-icon>-->
+<!--        </a>-->
+        <copy-link-btn [model]="data.link"></copy-link-btn>
+        <share-link-btns [colored]="true" [link]="data.link"></share-link-btns>
+    </header>
+
+    <click-charts [reports]="data.analytics" [endpoint]="analyticsEndpoint"></click-charts>
+</ng-container>

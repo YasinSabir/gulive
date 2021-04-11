@@ -1,0 +1,80 @@
+@import "variables";
+
+:host {
+    display: block;
+    background: mat-color($app-background, background);
+}
+
+.page-container {
+    padding-top: 50px;
+    min-height: calc(100vh - #{$material-navbar-height + 131}); // + footer
+}
+
+h1 {
+    margin: 0;
+}
+
+.group-description {
+    margin-bottom: 50px;
+}
+
+.links-container {
+  position: relative;
+}
+
+.real-links {
+  z-index: 1;
+  position: relative;
+}
+
+.group-link {
+    background-color: mat-color($app-background, card);
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid mat-color($app-foreground, divider-lighter);
+
+  :not(.skeleton-link) {
+    z-index: 1;
+  }
+
+    &:hover:not(.skeleton-link) {
+        background: mat-color($app-accent, emphasis);
+    }
+
+    a {
+        color: inherit;
+    }
+}
+
+.favicon-img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.long-url {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.short-url {
+    font-size: 1.3rem;
+}
+
+.link-description {
+    color: mat-color($app-foreground, secondary-text);
+    margin: 15px 0 0;
+    font-size: 1.3rem;
+}
+
+loading-indicator {
+  margin-top: 50px;
+}
+
+app-footer {
+    padding: 50px 5px;
+    font-size: 1.5rem;
+    border-top: none;
+    color: inherit;
+}

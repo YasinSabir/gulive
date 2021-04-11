@@ -1,0 +1,129 @@
+@import "variables";
+
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.clicks-chart .chart-body {
+  padding-right: 15px;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.custom-date-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+@media only screen and (max-width: 845px) {
+  .date-header {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .custom-date-container {
+    margin-top: 25px;
+  }
+}
+
+::ng-deep .click-charts-date-input input {
+  background-color: mat-color($app-background, card);
+}
+
+.apply-custom-range-button {
+  margin-left: 10px;
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+.referrers-panel {
+  overflow: auto;
+
+  .chart-header {
+    margin-bottom: 5px;
+  }
+
+  .referrer {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+  }
+
+  .count {
+    background-color: mat-color($app-accent);
+    color: mat-color($app-accent, default-contrast);
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: auto;
+    line-height: 10px;
+  }
+
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 85%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.locations-panel {
+  max-width: 700px;
+
+  .chart-body {
+    display: flex;
+    padding: 0 15px;
+  }
+
+  @media only screen and (max-width: $medium) {
+    height: auto;
+    max-height: none;
+
+    .chart-body {
+      display: block;
+    }
+
+    .country-list {
+      padding: 10px 0;
+    }
+  }
+
+  .country-chart-placeholder {
+    flex: 1 1 auto;
+    height: 100%;
+  }
+
+  .country {
+    padding: 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.3rem;
+  }
+
+  .country-name {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+

@@ -1,0 +1,138 @@
+<section id="footer">
+    <div class="row footer-wrap">
+
+        <div class="col-12 col-md-4 col-lg-2 pb-4 pb-lg-0 ftr-branding">
+            <a href="/"><img src="https://storage.googleapis.com/gal-uploads/1/elementor/thumbs/Gallaudet-Buff-White-p2dj3hm89p8fqkndiprn7uewahn0v586h7u3d9oul2.png"></a>
+            <p class="gu-statement pt-3">Gallaudet University is a federally chartered private and premier university for the deaf and hard of hearing since 1864.</p>
+            <div class="social">
+                <a target="_blank" href="https://instagram.com/gallaudetu"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://www.youtube.com/user/GallaudetVideo"><i class="fab fa-youtube"></i></a>
+                <a target="_blank" href="https://www.twitter.com/gallaudetu"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.facebook.com/gallaudetu"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 pb-4 pl-lg-5 pb-lg-0 ftr-links">
+            <h5>Undergraduate<br>Admissions</h5>
+            <li><a href="mailto:admissions@gallaudet.edu">admissions@gallaudet.edu</a></li>
+            <li><a href="tel:2022502474">(202) 250-2474 (videophone)</a></li>
+            <li><a href="tel:8009950550">(800) 995-0550 (voice)</a></li>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 pb-4 pb-lg-0 ftr-links">
+            <h5>Graduate<br>Admissions</h5>
+            <li><a href="mailto:graduate@gallaudet.edu">graduate@gallaudet.edu</a></li>
+            <li><a href="tel:2025248410">(202) 524-8410 (videophone)</a></li>
+            <li><a href="tel:2026515436">(202) 651-5436 (voice)</a></li>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 pb-4 pb-lg-0 ftr-links">
+            <h5>Center for Continuing and Online Education</h5>
+            <li><a href="mailto:ccoe@gallaudet.edu">ccoe@gallaudet.edu</a></li>
+        </div>
+
+        <div class="col-0 col-lg-3 pb-4 pb-lg-0 ftr-links">
+            <h5></h5>
+        </div>
+    </div>
+</section>
+
+<section id="footer-bar">
+    <div class="row footer-bar-wrap">
+        <div class="col-12 col-sm-6 text-left">
+            <p>Copyright © 2021 Gallaudet University. All rights reserved.</p>
+        </div>
+        <div class="col-12 col-sm-6 text-left text-sm-right">
+            <p>800 Florida Avenue NE Washington, D.C. 20002</p>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//Header JS - Printing inline to prevent calling another asset
+
+jQuery(function ($) {
+    // Prevent closing from click inside dropdown
+    $(document).on('click', '.dropdown-menu', function (e) {
+      e.stopPropagation();
+    });
+}); 
+</script>
+
+<script type="text/javascript">
+jQuery(function ($){
+  //change arrow direction on mobile
+  $('.dropdown-toggle').on('click', function(){
+        if ($(window).width() < 769) {
+            if ($(this).hasClass('mbl-nav-open')){
+                $(this).removeClass('mbl-nav-open');
+                $('.nav-item.dropdown').show();
+                $('.has-megamenu').removeClass('open');
+		$('#outer_nav').removeClass('lock-mbl-menu');
+            } else{
+                $(this).addClass('mbl-nav-open');
+                $('.nav-item.dropdown').hide();
+                $(this).parent('.nav-item.dropdown').show();
+		$('#outer_nav').addClass('lock-mbl-menu');
+            }
+        } else{
+	    window.location.href = $(this).attr('href');
+	}
+  });
+
+      $(window).scroll(function(){
+        if ($(window).width() > 768) {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 120) {
+                $('#outer_nav').css('opacity','0');
+                $('#outer_nav').addClass('header-sticky');
+                $('.navbar-brand img').attr('src', 'https://storage.googleapis.com/gal-uploads/1/2020/02/GU-Buff-White-768x593.png');
+                      
+            } else {
+                $('#outer_nav').css('opacity','1');
+                $('#outer_nav').removeClass('header-sticky');  
+                $('.navbar-brand img').attr('src', 'https://storage.googleapis.com/gal-uploads/1/elementor/thumbs/GU-p2dj3hm3n1wfli7mdysrvaw604ywfsijae14pnxqm8.png');
+            }
+        }
+      });
+
+  if ($(window).width() < 769) {
+    $('.navbar-brand img').attr('src', 'https://storage.googleapis.com/gal-uploads/1/2020/02/GU-Buff-White-768x593.png');
+    $('button.navbar-toggler').on('click',function(){
+        $('.dropdown-toggle').removeClass('mbl-nav-open');
+        if (document.querySelector('.sticky-links-tab').style.display === 'none') {
+            document.querySelector('.sticky-links-tab').style.display = 'block';
+        } else {
+            document.querySelector('.sticky-links-tab').style.display = 'none';
+        }
+    });
+  } 
+
+  $(window).resize(function(){
+    if ($(window).width() < 769) {
+        $('.navbar-brand img').attr('src', 'https://storage.googleapis.com/gal-uploads/1/2020/02/GU-Buff-White-768x593.png');
+        $('#outer_nav').css('opacity','1');
+    } else {
+        $('.navbar-brand img').attr('src', 'https://storage.googleapis.com/gal-uploads/1/elementor/thumbs/GU-p2dj3hm3n1wfli7mdysrvaw604ywfsijae14pnxqm8.png');
+    }
+  });
+
+  $('#searchbox').on('keyup', function(e){
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        var currentSearchQuery = $('#searchbox').val();
+        window.location.href = "https://www.gallaudet.edu/search-results?terms=" + currentSearchQuery;
+    }
+  });
+
+});
+
+</script>
+
+</body>
+</html>

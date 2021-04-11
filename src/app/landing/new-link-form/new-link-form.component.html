@@ -1,0 +1,55 @@
+<form (ngSubmit)="submit()" ngNativeValidate>
+    <div class="input-container">
+        <div class="input-with-action">
+            <label for="newLinkControl" class="hidden">{{content.actions.inputText}}</label>
+            <input type="text" id="newLinkControl" [placeholder]="content.actions.inputText" [formControl]="newLinkControl" [readonly]="activeLink$ | async" #input required>
+            <button type="submit" class="submit-button" mat-flat-button color="accent" [disabled]="loading$ | async">
+                <span *ngIf="activeLink$ | async; else noActiveLink" trans>Copy</span>
+                <ng-template #noActiveLink>{{content.actions.inputButton}}</ng-template>
+            </button>
+        </div>
+    </div>
+    <div class="extra-advance-button">
+        <a class="get-started-button" mat-raised-button color="accent" (click)="toggle()" id="bt">
+            {{buttonName}}
+        </a>
+    </div>
+    <div class="extraFields" *ngIf="show">
+        <div class="input-container">
+            <div class="group first-group ng-star-inserted">
+                <div class="inline-inputs-container">
+                    <div class="input-container">
+                        <label class="custom-label">Campaign Source</label>
+                        <input type="text" id="campaign_source" class="custom-input-style" placeholder="The referrer: (e.g. google, newsletter)" [formControl]="campaignSource" [readonly]="activeLink$ | async" #input required>
+                    </div>
+                    <div class="input-container">
+                        <label class="custom-label">Campaign Medium</label>
+                        <input type="text" id="campaign_medium" class="custom-input-style"  placeholder="Marketing medium: (e.g. cpc, banner, email)" [formControl]="campaignMedium" [readonly]="activeLink$ | async" #input required>
+                    </div>
+                </div>
+            </div>
+            <div class="group second-group">
+                <div class="inline-inputs-container">
+                    <div class="input-container">
+                        <label class="custom-label">Campaign Name</label>
+                        <input type="text" id="campaign_name" class="custom-input-style" placeholder="Product, promo code, or slogan (e.g. spring_sale)" [formControl]="campaignName" [readonly]="activeLink$ | async" #input required>
+                    </div>
+                    <div class="input-container">
+                        <label class="custom-label">Campaign Term</label>
+                        <input type="text" id="campaign_term" class="custom-input-style" placeholder="Identify the paid keywords" [formControl]="campaignTerm" [readonly]="activeLink$ | async" #input required>
+                    </div>
+                </div>
+            </div>
+            <div class="group second-group">
+                <div class="inline-inputs-container">
+                    <div class="input-container">
+                        <label class="custom-label">Campaign Content</label>
+                        <input type="text" id="campaign_context" class="custom-input-style"  placeholder="Use to differentiate ads" [formControl]="campaignContext" [readonly]="activeLink$ | async" #input required>
+                    </div>
+                    <div class="input-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

@@ -1,0 +1,93 @@
+@import "variables";
+
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.group {
+  border-bottom: 1px solid mat-color($app-foreground, divider);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.first-group {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid mat-color($app-foreground, divider);
+}
+
+header {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: auto;
+    align-self: flex-start;
+  }
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin-top: 3px;
+  color: mat-color($app-foreground, secondary-text);
+  max-width: 650px;
+}
+
+.inline-inputs-container {
+  margin-bottom: 20px;
+}
+
+.remove-rule-btn {
+  // align with inline inputs
+  margin-top: 29px;
+  margin-left: 5px;
+  flex-shrink: 0;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.host-input {
+  font-size: 1.6rem;
+}
+
+.base-url-prefix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: $input-height;
+  text-align: right;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+@media screen and (max-width: $medium) {
+  .inline-inputs-container {
+    display: block;
+    position: relative;
+  }
+
+  .device-input-container, .country-input-container {
+    margin-bottom: 15px;
+  }
+
+  .remove-rule-btn {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    margin: 0;
+  }
+
+  .rule-inline-inputs:not(:last-of-type) {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid mat-color($app-foreground, divider-lighter);
+  }
+}

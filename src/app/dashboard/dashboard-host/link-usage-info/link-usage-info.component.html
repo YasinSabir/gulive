@@ -1,0 +1,18 @@
+<div class="header" *ngIf="(linkUsage.response$ | async)?.userOwnsWorkspace">
+    <div class="current-plan">
+        {{ ('Current Plan:' | trans) + ' ' + (currentUser.getSubscription()?.plan?.name || ('Free' | trans))}}
+    </div>
+    <div class="next-payment">
+        {{ ('Next Payment:' | trans) + ' ' + ((currentUser.getSubscription()?.renews_at | formattedDate) || ('Never' | trans))}}
+    </div>
+</div>
+
+<ul class="unstyled-list" *ngIf="(linkUsage.response$ | async).usage as usage">
+    <li *ngIf="usage.links">{{usage.links.used + ' ' + ('out of' | trans) + ' ' + (usage.links.total || ('Unlimited' | trans)) + ' ' + ('Links' | trans) }}</li>
+    <li *ngIf="usage.link_clicks">{{usage.link_clicks.used + ' ' + ('out of' | trans) + ' ' + (usage.link_clicks.total || ('Unlimited' | trans)) + ' ' + ('Visitors' | trans) }}</li>
+    <li *ngIf="usage.link_overlays">{{usage.link_overlays.used + ' ' + ('out of' | trans) + ' ' + (usage.link_overlays.total || ('Unlimited' | trans)) + ' ' + ('Link Overlays' | trans) }}</li>
+    <li *ngIf="usage.custom_pages">{{usage.custom_pages.used + ' ' + ('out of' | trans) + ' ' + (usage.custom_pages.total || ('Unlimited' | trans)) + ' ' + ('Custom Link Pages' | trans) }}</li>
+    <li *ngIf="usage.custom_domains">{{usage.custom_domains.used + ' ' + ('out of' | trans) + ' ' + (usage.custom_domains.total || ('Unlimited' | trans)) + ' ' + ('Custom Domains' | trans) }}</li>
+    <li *ngIf="usage.link_groups">{{usage.link_groups.used + ' ' + ('out of' | trans) + ' ' + (usage.link_groups.total || ('Unlimited' | trans)) + ' ' + ('Link Groups' | trans) }}</li>
+    <li *ngIf="usage.tracking_pixels">{{usage.tracking_pixels.used + ' ' + ('out of' | trans) + ' ' + (usage.tracking_pixels.total || ('Unlimited' | trans)) + ' ' + ('Tracking Pixels' | trans) }}</li>
+</ul>

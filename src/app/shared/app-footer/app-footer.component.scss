@@ -1,0 +1,15 @@
+@import "variables";
+
+:host {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid mat-color($app-foreground, divider);
+  background-color: mat-color($app-background, background);
+  color: mat-color($app-foreground, secondary-text);
+}
+
+.social {
+  margin-left: auto;
+  margin-right: auto;
+}

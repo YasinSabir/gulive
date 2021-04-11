@@ -1,0 +1,46 @@
+@import "variables";
+
+header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  flex-wrap: wrap;
+
+  .long-url {
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media only screen and (max-width: $medium) {
+    .long-url {
+      width: calc(100% - 32px); // link image width + margin
+    }
+
+    .long-url, img {
+      margin-bottom: 15px;
+    }
+  }
+
+  @media only screen and (min-width: $medium) {
+    share-link-btns {
+      margin-left: auto;
+    }
+
+    .edit-btn {
+      margin-left: 10px;
+    }
+  }
+
+  img {
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .edit-btn, copy-link-btn {
+    color: mat-color($app-foreground, icon);
+  }
+}

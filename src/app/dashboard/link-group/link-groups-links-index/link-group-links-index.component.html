@@ -1,0 +1,40 @@
+<header>
+    <div *ngIf="linkGroup$ | async as linkGroup" @fadeIn>
+        <h1 class="name">
+            <a routerLink="../../" mat-icon-button>
+                <mat-icon svgIcon="arrow-back"></mat-icon>
+            </a>
+            {{linkGroup.name}} {{ 'Links' | trans }}
+        </h1>
+    </div>
+    <h1 *ngIf="!(linkGroup$ | async)" @fadeOut>
+        <skeleton variant="text"></skeleton>
+    </h1>
+</header>
+
+<div class="datatable responsive-table">
+    <datatable-header pluralResourceName="links">
+        <ng-container leftContent>
+            <button mat-raised-button color="accent" (click)="showCrupdateLinkModal()" [disabled]="!currentUser.hasPermission('links.create')" trans>New Link</button>
+            <button mat-button (click)="showAttachLinkModal()" trans>Attach</button>
+        </ng-container>
+        <ng-container rightContent>
+            <button mat-raised-button color="accent" [matTooltip]="'Detach selected' | trans" (click)="maybeDetachSelectedLinks()" trans>Detach</button>
+            <button mat-raised-button color="accent" (click)="maybeDeleteSelectedLinks()" trans>Delete</button>
+        </ng-container>
+        <ng-template filters>
+            <link-table-filters [showUserFilter]="!filterByUser()"></link-table-filters>
+        </ng-template>
+    </datatable-header>
+    <link-table [showOwnerColumn]="!filterByUser()" [links]="datatable.data$ | async">
+        <ng-template #editButton let-link="link">
+            <button mat-icon-button permissionAwareButton="links.update" (click)="showCrupdateLinkModal(link)" [resource]="link" [matTooltip]="'Edit link' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+        </ng-template>
+    </link-table>
+    <no-results-message svgImage="share-link.svg" *ngIf="datatable.paginator.noResults$ | async">
+        <span primary-text>No links have been added to this group yet</span>
+    </no-results-message>
+    <datatable-footer></datatable-footer>
+</div>

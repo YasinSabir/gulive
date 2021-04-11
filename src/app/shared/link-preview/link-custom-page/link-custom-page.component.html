@@ -1,0 +1,17 @@
+<material-navbar [showToggleButton]="false" [hideRightSideActions]="true" *ngIf="!shouldHideNav()">
+    <div class="link-actions-wrapper push-right">
+        <ng-container *ngIf="timeout$ | async as timeout">
+            <button mat-flat-button color="accent" *ngIf="timeout > 1; else timeoutDone">
+                <span trans>Redirect In</span> {{ timeout$ | async }}
+            </button>
+            <ng-template #timeoutDone>
+                <button mat-flat-button color="accent" (click)="redirect()" trans>Go to link</button>
+            </ng-template>
+        </ng-container>
+        <share-link-btns [link]="link" [showCopyBtn]="true"></share-link-btns>
+    </div>
+</material-navbar>
+
+<ad-host slot="ads.page.top"></ad-host>
+
+<custom-page [page]="link.custom_page" [showNavbar]="false"></custom-page>

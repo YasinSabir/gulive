@@ -1,0 +1,17 @@
+<material-navbar menuPosition="dashboard-navbar" [showToggleButton]="true" (toggleButtonClick)="toggleSidebarMode()">
+    <workspace-selector></workspace-selector>
+</material-navbar>
+
+<mat-sidenav-container>
+    <mat-sidenav [class.sidebar-compact]="sidebarCompact" [opened]="!leftColumnIsHidden" [mode]="(breakpoints.isMobile$ | async) ? 'over' : 'side'" [fixedInViewport]="true" [fixedTopGap]="70">
+        <div class="sidenav-wrapper">
+            <custom-menu position="dashboard-sidebar" [vertical]="true" [compact]="sidebarCompact" class="vertical"></custom-menu>
+            <upgrade-panel [compact]="sidebarCompact"></upgrade-panel>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content-inner">
+        <ad-host slot="ads.dashboard.top"></ad-host>
+        <router-outlet (activate)="onPageChange($event)"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,20 @@
+<div class="inner-content">
+    <ng-container *ngIf="action === 'create'">
+        <ng-container [ngSwitch]="createFailType">
+            <span *ngSwitchCase="'overQuota'" [transValues]="transValues" trans>
+                You've reached the maximum number of :resource available in current :type.
+            </span>
+                <span *ngSwitchDefault [transValues]="transValues" trans>
+                You can't create :resource in current :type.
+            </span>
+        </ng-container>
+        <ng-container *ngIf="settings.get('billing.enable') && userOwnsWorkspace">
+            You'll need to upgrade your plan to create more.
+            &ngsp;
+            <a routerLink="/billing/pricing" (click)="close()" trans>View plan options</a>
+        </ng-container>
+    </ng-container>
+
+    <span *ngIf="action === 'delete'" [transValues]="transValues" trans>You can't delete :resource in current :type</span>
+    <span *ngIf="action === 'update'" [transValues]="transValues" trans>You can't edit :resource in current :type</span>
+</div>

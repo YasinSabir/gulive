@@ -1,0 +1,11 @@
+@import "variables";
+
+:host-context(.colored) {
+  .facebook-btn {
+    color: $facebook-color;
+  }
+
+  .twitter-btn {
+    color: $twitter-color;
+  }
+}

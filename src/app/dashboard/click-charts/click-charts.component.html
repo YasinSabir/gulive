@@ -1,0 +1,96 @@
+<ng-container *ngIf="transformedReports$ | async as reports">
+    <header class="date-header">
+        <mat-button-toggle-group class="right" [formControl]="range">
+            <mat-button-toggle value="hourly" trans>Hourly</mat-button-toggle>
+            <mat-button-toggle value="weekly" trans>Weekly</mat-button-toggle>
+            <mat-button-toggle value="monthly" trans>Monthly</mat-button-toggle>
+            <mat-button-toggle value="yearly" trans>Yearly</mat-button-toggle>
+            <mat-button-toggle value="custom" trans>Custom</mat-button-toggle>
+        </mat-button-toggle-group>
+
+       <div class="custom-date-container" *ngIf="(range.valueChanges | async) === 'custom'">
+           <between-input class="click-charts-date-input" [formControl]="customRangeControl"></between-input>
+           <button type="button" mat-raised-button color="accent" class="apply-custom-range-button" [disabled]="!(customRangeControl.valueChanges | async)" (click)="customRange$.next(customRangeControl.value)" trans>Apply</button>
+       </div>
+    </header>
+
+    <div class="chart-row">
+        <div class="chart-wrapper">
+            <chart [chartConfig]="reports.clicks" class="clicks-chart" height="400">
+                <div class="chart-header clicks-chart-header">
+                    <div class="left">
+                        <div class="title" trans>{{ ('Clicks this ' + getRangeName()) | trans }}</div>
+                        <div class="subtitle">{{reports.totalClicks}} {{ 'Total Clicks' | trans }}</div>
+                    </div>
+                </div>
+            </chart>
+        </div>
+        <div class="chart-wrapper pie-wrapper">
+            <chart [chartConfig]="reports.devices" height="385">
+                <div class="chart-header">
+                    <div class="title" trans>Top Devices</div>
+                    <div class="subtitle" trans>Click count by device</div>
+                </div>
+            </chart>
+        </div>
+    </div>
+
+    <div class="chart-row">
+        <div class="chart-wrapper referrers-panel">
+            <div class="chart">
+                <div class="chart-header">
+                    <div class="title" trans>Referrers</div>
+                    <div class="subtitle" trans>Click count by referrer</div>
+                </div>
+                <ul class="unstyled-list">
+                    <li class="referrer" *ngFor="let referrer of reports.referrers">
+                        <a [href]="referrer.label" class="url" target="_blank" *ngIf="referrer.label; else direct">{{referrer.label}}</a>
+                        <ng-template #direct>
+                            <div trans>Direct, Email, SMS</div>
+                        </ng-template>
+                        <div class="count">{{referrer.count}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="chart-wrapper locations-panel">
+            <div class="chart">
+                <div class="chart-header">
+                    <div class="title" trans>Top Locations</div>
+                    <div class="subtitle" trans>Click count by country</div>
+                </div>
+                <div class="chart-body">
+                    <div class="country-chart-placeholder" #countryChartPlaceholder></div>
+                    <div class="country-list">
+                        <div class="country" *ngFor="let country of reports.locations">
+                            <span class="country-name">{{country.label}}</span> ({{country.percentage}}%)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-row">
+        <div class="chart-wrapper pie-wrapper">
+            <chart [chartConfig]="reports.browsers" height="385">
+                <div class="chart-header">
+                    <div class="title" trans>Top Browsers</div>
+                    <div class="subtitle" trans>Click count by browser</div>
+                </div>
+            </chart>
+        </div>
+
+        <div class="chart-wrapper pie-wrapper">
+            <chart [chartConfig]="reports.platforms" height="385">
+                <div class="chart-header">
+                    <div class="title" trans>Top Platforms</div>
+                    <div class="subtitle" trans>Click count by OS</div>
+                </div>
+            </chart>
+        </div>
+    </div>
+</ng-container>
+
+<loading-indicator [isVisible]="loading$ | async" class="overlay"></loading-indicator>

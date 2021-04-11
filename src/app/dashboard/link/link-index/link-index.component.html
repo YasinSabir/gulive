@@ -1,0 +1,22 @@
+<div class="datatable responsive-table">
+    <datatable-header pluralResourceName="links">
+<!--        <button leftContent mat-raised-button color="accent" permissionAwareButton="links.create" (click)="showCrupdateLinkModal()" trans>New Link</button>-->
+<!--        <button rightContent mat-raised-button color="accent" (click)="maybeDeleteSelectedLinks()" permissionAwareButton="links.delete" trans>Delete Selected</button>-->
+        <button leftContent mat-raised-button color="accent"  (click)="showCrupdateLinkModal()" trans>New Link</button>
+        <button rightContent mat-raised-button color="accent" (click)="maybeDeleteSelectedLinks()" trans>Delete Selected</button>
+        <ng-template #tableFilters>
+            <link-table-filters [showUserFilter]="showUserColumn()"></link-table-filters>
+        </ng-template>
+    </datatable-header>
+    <link-table [showOwnerColumn]="showUserColumn()" [links]="datatable.data$ | async">
+        <ng-template #editButton let-link="link">
+            <button mat-icon-button permissionAwareButton="links.update" (click)="showCrupdateLinkModal(link)" [resource]="link" [matTooltip]="'Edit link' | trans">
+                <mat-icon svgIcon="edit"></mat-icon>
+            </button>
+        </ng-template>
+    </link-table>
+    <no-results-message svgImage="share-link.svg" *ngIf="datatable.paginator.noResults$ | async">
+        <span primary-text>No links have been added yet</span>
+    </no-results-message>
+    <datatable-footer></datatable-footer>
+</div>

@@ -1,0 +1,645 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+html,
+body,
+div,
+p,
+span,
+a,
+h1,
+h2,
+h3,
+h4,
+table,
+tab,
+header,
+container,
+{
+    margin: auto;
+    padding: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/***Container-width***/
+
+@media (min-width: 1200px) {
+
+    form {
+        margin-left: 65px;
+        width: 95%;
+    }
+    /******1st Sec***/
+    #break-sp {
+        white-space: break-spaces;
+    }
+    #per-lin {
+        white-space: pre-line;
+    }
+}
+
+@media (min-width: 768px) and (max-width:1199px) {
+
+    .card-body ul li a {
+        font-size: 10pt;
+    }
+}
+
+
+/*******For mobile************/
+
+@media (max-width: 991px) {
+    form {
+        margin-left: 0px !important;
+        width: 100%;
+        margin-top: 20px !important;
+    }
+}
+
+@media (min-width: 991px) {
+    /***Apply Button******/
+    #apply_bt {
+        padding: 2px 11px !important;
+        border: 1px solid #175385;
+        border-radius: 6px;
+        font-size: 15px;
+        margin-top: 5px;
+        font-weight: 600;
+        transition: 0.5s all;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link,
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0px;
+        padding-left: 0px !important;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+}
+
+
+/*****************************
+*****************************Adding FOnt**************/
+
+body {
+    overflow-x: hidden;
+}
+
+p,
+span,
+blockquote {
+    color: #595f6f;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #0F4D81;
+    font-weight: bold;
+}
+
+h3,
+h4 {
+    font-weight: bold;
+}
+
+.container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+
+/***********FOnt -FAmily********/
+
+
+/*#top-bar div p, .nav-link, h1, h2, h3, h4, h5, p, span{font-family:ProximaNova-bold;} */
+
+
+/***************Topbar*************/
+
+#top-bar {
+    height: 42px;
+    background: #eff0f5;
+}
+
+p#topbar-text {
+    margin-top: 5px;
+    font-weight: 600;
+    color: #595f6f;
+    padding-left: 0;
+    font-size: 12px;
+    margin-bottom: 0;
+    float: right;
+    margin-top: 12px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#topbar-text a {
+  font-weight: 400;
+}
+
+/*********Nav*******/
+
+.bg-light,
+#content_bg {
+    background: #f7f8fb;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(24, 84, 134, 0.9);
+    font-weight: bold;
+    padding-left: 1rem;
+    font-size: 15px;
+}
+
+
+/**********Spacer******/
+
+#narrow-spacer {
+    height: 20px;
+}
+
+#normal-spacer {
+    height: 50px;
+}
+
+#medium-spacer {
+    height: 30px;
+}
+
+#large-spacer {
+    height: 150px;
+}
+
+
+/******************Arrow**********/
+
+#arrow {
+    max-width: 90px;
+    margin-bottom: -100px;
+    margin-left: 30px;
+}
+
+
+/*****************Button****************/
+
+button {
+    margin: 15px 0px 30px 0px;
+}
+
+.fa {
+    font-weight: 550;
+}
+
+
+/********Normal Button******/
+
+.n-bt {
+    padding: 8px 14px 8px 14px;
+    background: white;
+    border: 1px solid rgba(24, 84, 134, 0.7);
+    border-radius: 5px;
+    color: rgba(24, 84, 134, 0.7);
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.5s all;
+}
+
+
+/********FOR DEsktop*****/
+
+.future-sec {
+    margin-bottom: -3px;
+}
+
+div#future-sp span {
+    font-weight: 600;
+}
+
+
+/*****CArd****CSS*****************************/
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.card {
+    border: 1px solid white;
+}
+
+.card-title {
+    margin-bottom: -10px;
+    font-weight: 700;
+    font-size: 37px;
+}
+
+.card-body ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0px;
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.card-body ul li {
+    margin-left: 10px;
+}
+
+.card-body ul li a {
+    font-weight: 700;
+    color: #0f4d81;
+}
+
+
+/***Bacground-image for second section******/
+
+#bg-mask {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-position-x: 100px;
+}
+
+.faq-container {
+    background-repeat: no-repeat;
+    background-size: 250px;
+    background-image: url(images/Rectangle-3.png);
+    background-position: -8px;
+}
+
+#counselor {
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position-y: -225px;
+ box-shadow: inset 0px 5px 23px -3px #80808026;
+    background-position-x: 2px;
+    margin-top: 150px;
+}
+
+
+/***********After gallaudet**Parag********/
+
+#about_gallaudet {
+    font-size: 18px;
+    word-spacing: 5px;
+}
+
+
+/******Accordions*******************/
+
+.wrapper {
+    width: 70%;
+}
+
+@media(max-width:992px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+.panel-heading {
+    padding: 0;
+    border: 0;
+}
+
+.panel-title>a,
+.panel-title>a:active {
+    display: block;
+    padding: 15px;
+    color: #595f6f;
+    font-size: 18px;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.panel-heading a:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f054";
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+    float: right;
+    transition: all 0.5s;
+}
+
+.panel-heading.active a:before {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(90deg) !important;
+}
+
+.panel-group {
+    border: 1px solid #d3d3d373;
+}
+
+div.panel-heading {
+    border-bottom: 1px solid #d3d3d373;
+}
+
+.panel-body {
+    padding: 20px;
+}
+
+blockquote {
+    padding-left: 10px;
+}
+
+blockquote {
+    border-left: 3px solid #4e7ca3;
+}
+
+
+/**Footer*******SOcial***Icons****************/
+
+#ftr_ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0px;
+}
+
+ul#ftr_ul li {
+    margin-right: 10px;
+}
+
+ul#ftr_ul li a i {
+    font-size: 10px;
+}
+
+.fa-play,
+.fa-instagram,
+.fa-twitter,
+.fa-facebook-f {
+    color: #0d3f69;
+}
+
+ul#ftr_ul li a i {
+    background: #dddfe7;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+ul#ftr_ul li a .fa-facebook-f {
+    padding: 7px 12px 7px 10px;
+}
+
+ul#ftr_ul li a .fa-play {
+    padding: 7px 6px 7px 11px;
+}
+
+ul#ftr_ul li a .fa-instagram {
+    padding: 7px 9px 7px 9px;
+}
+
+ul#ftr_ul li a .fa-twitter {
+    padding: 7px 7px 7px 7px;
+}
+
+.main-heading h1 {
+    font-size: 80px;
+    letter-spacing: -5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500 !important;
+}
+
+.main-heading {
+    margin-top: 30px;
+}
+
+.main-heading h3 {
+    font-size: 44px;
+}
+
+h1.start-future-text {
+    font-size: 53px;
+    font-weight: 800;
+    color: #0F4D81;
+    padding-top: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+footer p {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+}
+
+
+#apply_bt:hover, #apply_bt:focus {
+    background-color: #eff0f5;
+}
+
+
+
+
+
+h1.start-future-text:after {content: '';display: inline-block;width: 100%;height: 2px;background-color: rgba(239, 202, 119, 0.6);position: absolute;/* right: -83px; */top: 80px;left: 104%;}
+
+.future-para {
+  font-size:18px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.row.start-future-boxes div:first-child {
+    padding-left: 0;
+}
+
+.row.start-future-boxes {
+    padding-top: 50px;
+}
+
+.row.start-future-boxes span {
+    font-weight: 600;
+    opacity: 0.93;
+    margin-top: 5px;
+    display: block;
+}
+
+.row.start-future-boxes h3 {
+    font-weight: 700 !important;
+}
+
+button.n-bt:hover, .n-bt:focus {
+    background-color: #eff0f5;
+}
+
+.admission-counselors-container h2 {
+    color: #595f6f;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 150px;
+}
+
+img {}
+
+.admission-counselors-container .img-square-wrapper {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.admission-counselors-container .img-square-wrapper img {
+    width: 100%;
+}
+
+.admission-counselors-container .card {
+    background: transparent !important;
+}
+
+.admission-counselors-container .card-body h4 {
+    font-size: 19px;
+}
+
+span#per-lin {}
+
+.admission-counselors-container .card-body span#per-lin {
+    font-weight: 600;
+    color: rgba(89, 95, 111, 0.9);
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.admission-counselors-container .card ul {
+    margin-top: 30px;
+    font-size: 11px;
+}
+
+div#accordion {
+    border-radius: 4px;
+    margin-top: 40px;
+}
+
+.faq-container:before {
+}
+
+.faq-container .container {
+    background-color: #FFF;
+}
+
+.form-container .form-control {
+    font-size: 12px;
+    height: 30px;
+}
+
+.form-container .form-control {
+    margin-bottom: 10px;
+}
+
+.form-container .form-group label {
+    font-weight: 500;
+}
+
+.footer-left-side img {
+    width: 140px;
+}
+
+.footer-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.form-container textarea.form-control {
+    height: auto;
+}
+
+@media(max-width: 768px){
+    .main-heading h1 {
+    font-size: 50px;
+    letter-spacing: normal;
+}
+
+h1.start-future-text:after {
+    display: none;
+}
+
+.row.start-future-boxes div {
+    padding-left: 0;
+}
+
+.admission-counselors-container .img-square-wrapper {
+    /* width: 100%; */
+    margin: 0 auto;
+}
+
+.card-horizontal {
+    flex-direction: column;
+}
+
+.admission-counselors-container .card-body h4 {
+    font-size: 17px;
+}
+
+.admission-counselors-container h2 {
+    padding-left: 15px;
+    margin-top: 0;
+    font-size: 40px;
+}
+
+.card-body ul {
+    flex-direction: column;
+}
+
+.card-body ul li {
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.card-body ul li:not(:first-child) {
+    margin-left: 7px;
+}
+
+.container.form-container {
+    padding: 5px 30px;
+}
+
+.container.footer-container {
+    padding-left: 30px;
+}
+.form-group {
+    margin-bottom: 0;
+}
+.card-body ul li {
+    margin-bottom: 0px !important;
+}
+}
+@media(min-width: 768px){
+#counselor:after {
+    background-repeat: no-repeat;
+    background-size: 250px;
+    background-image: url(images/Rectangle-1.png);
+    background-position: right 50%;
+    content: '';
+    height: 840px;
+    width: 300px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#counselor {
+    position: relative;
+}
+}
+
+@media(max-width: 768px){
+    #counselor {
+        box-shadow: none;
+    }
+}
+
+
+#counselor {
+    box-shadow: inset 0px 5px 8px -3px rgba(128, 128, 128, 0.14901960784313725);
+}

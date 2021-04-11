@@ -1,0 +1,33 @@
+<table class="material-table">
+    <thead>
+    <tr>
+        <th table-header-checkbox></th>
+        <th trans>Api Keys</th>
+        <ng-container *ngIf="showOwnerColumn">
+            <th table-sort-header="user_id" trans>Owner</th>
+        </ng-container>
+        <th table-sort-header="clicks_count">Created At</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let link of links">
+        <td [table-body-checkbox]="link.id"></td>
+           <td class="link-summary-column mobile-no-label">
+            <a class="long-url" [href]="link.api_key" target="_blank">
+                <span>{{link.api_key | removeProtocol | slice:0:50}}</span>
+            </a>
+            <div class="short-url">
+                <a href="#" target="_blank">{{link.title}}</a>
+            </div>
+        </td>
+        <td data-label="Owner" *ngIf="showOwnerColumn">
+            <user-column [user]="link.user"></user-column>
+        </td>
+        <td data-label="Last Updated">{{link.created_at | formattedDate}}</td>
+        <td class="edit-column">
+            <copy-api-btn [model]="link"></copy-api-btn>
+        </td>
+    </tr>
+    </tbody>
+</table>

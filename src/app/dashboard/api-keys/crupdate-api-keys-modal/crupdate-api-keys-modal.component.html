@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h2 mat-dialog-title>
+        <!--        <span *ngIf="updating$ | async; else creating" trans>Update Link</span>-->
+        <!--        <ng-template #creating><span trans>Creating Api Key</span></ng-template>-->
+        <span  trans>Creating Api Key</span>
+    </h2>
+    <button type="button" (click)="close()" class="close-button no-style" tabindex="-1">
+        <mat-icon svgIcon="close"></mat-icon>
+    </button>
+</div>
+<form (ngSubmit)="confirm()" ngNativeValidate>
+    <mat-dialog-content>
+        <ng-container *ngIf="linkForm.errors$ | async as errors" [formGroup]="linkForm.formGroup">
+            <div class="input-container">
+                <input type="text" id="link-dialog-long-url" autocomplete="off" formControlName="title"
+                       placeholder="Enter api title..." trans-placeholder minlength="3" maxlength="250">
+                <div class="error" *ngIf="errors.title">{{errors.title}}</div>
+            </div>
+        </ng-container>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button (click)="close()" type="button" mat-button trans>Cancel</button>
+        <button type="submit" mat-raised-button color="accent" [disabled]="loading$ | async" trans>Generate</button>
+    </mat-dialog-actions>
+</form>

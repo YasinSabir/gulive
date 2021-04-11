@@ -1,0 +1,171 @@
+<ng-container [formGroup]="linkForm.formGroup" *ngIf="linkForm.errors$ | async as errors">
+    <div class="group first-group">
+        <div class="inline-inputs-container">
+            <div class="input-container">
+                <label for="link-dialog-alias" trans>Custom Link ID</label>
+                <input type="text" id="link-dialog-alias" formControlName="alias" [minlength]="aliasMin" [maxlength]="aliasMax" pattern="[A-Za-z0-9_-]+">
+                <p class="error" *ngIf="errors.alias">{{errors.alias}}</p>
+            </div>
+
+            <div class="input-container">
+                <datetime-input id="link_dialog_expires_at" formControlName="expires_at" trans>Expiration Date</datetime-input>
+                <p class="error" *ngIf="errors.expires_at">{{errors.expires_at}}</p>
+            </div>
+        </div>
+
+       <div class="inline-inputs-container">
+           <div class="input-container">
+               <label for="link_dialog_disabled" trans>Disabled</label>
+               <select id="link_dialog_disabled" formControlName="disabled">
+                   <option [ngValue]="true" trans>Yes</option>
+                   <option [ngValue]="false" trans>No</option>
+               </select>
+           </div>
+           <div class="input-container">
+               <label for="link-dialog-password" trans>Password</label>
+               <input type="password" id="link-dialog-password" formControlName="password">
+               <p class="error" *ngIf="errors.password">{{errors.password}}</p>
+           </div>
+       </div>
+    </div>
+
+    <div class="group" *ngIf="linkOptions?.domains?.length && this.settings.get('custom_domains.allow_select')">
+        <header>
+            <div class="header-text">
+                <h3 trans>Domain</h3>
+                <p trans>Select on which domain should this short link be accessible.</p>
+            </div>
+        </header>
+        <div class="input-container">
+            <label for="link_dialog_domain_id" class="hidden" trans>Domain</label>
+            <select id="link_dialog_domain_id" formControlName="domain_id">
+                <option [ngValue]="null" trans>All my domains (including default)</option>
+                <ng-container *ngIf="defaultHost$ | async as defaultHost">
+                    <option [ngValue]="0">{{defaultHost}}</option>
+                    <ng-container *ngFor="let domain of linkOptions.domains">
+                        <option [ngValue]="domain.id" *ngIf="defaultHost !== domain.host">{{domain.host}}</option>
+                    </ng-container>
+                </ng-container>
+            </select>
+        </div>
+    </div>
+
+    <div class="group" *ngIf="linkOptions?.groups?.length">
+        <header>
+            <div class="header-text">
+                <h3 trans>Link Groups</h3>
+                <p trans>Groups this link should be attached to.</p>
+            </div>
+        </header>
+        <mat-form-field appearance="outline">
+            <mat-label trans>Select Groups</mat-label>
+            <mat-select formControlName="groups" multiple>
+                <mat-option *ngFor="let group of linkOptions.groups" [value]="group.id">{{capitalize(group.name)}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="group many-inputs">
+        <header>
+            <div class="header-text">
+                <h3 trans>Tags and Description</h3>
+                <p trans>Add tags and description to easily find your links.</p>
+            </div>
+        </header>
+        <div class="input-container">
+            <label for="link_dialog_title" trans>Title</label>
+            <input type="text" id="link_dialog_title" formControlName="title" maxlength="140">
+            <p class="error" *ngIf="errors.title">{{errors.title}}</p>
+        </div>
+
+        <div class="input-container">
+            <label for="link_dialog_tags" trans>Tags</label>
+            <chip-input id="link_dialog_tags" formControlName="tags" placeholder="+New tag" trans-placeholder></chip-input>
+        </div>
+
+        <div class="input-container">
+            <label for="link_dialog_description" trans>Description</label>
+            <textarea id="link_dialog_description" formControlName="description" maxlength="240"></textarea>
+            <p class="error" *ngIf="errors.description">{{errors.description}}</p>
+        </div>
+    </div>
+
+    <div class="group" *ngIf="linkOptions?.pixels?.length && this.settings.get('links.pixels')">
+        <header>
+            <div class="header-text">
+                <h3 trans>Tracking Pixel</h3>
+                <p trans>Select tracking pixels that should be used for this link.</p>
+            </div>
+        </header>
+        <mat-form-field appearance="outline">
+            <mat-label trans>Select Pixels</mat-label>
+            <mat-select formControlName="pixels" multiple>
+                <mat-option *ngFor="let pixel of linkOptions.pixels" [value]="pixel.id">{{capitalize(pixel.name)}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="group" *ngIf="linkOptions && settings.get('links.geo_targeting')">
+        <header>
+            <div class="header-text">
+                <h3 trans>Location Targeting</h3>
+                <p trans>Redirect users to different urls based on their location.</p>
+            </div>
+            <button mat-icon-button color="accent" type="button" (click)="linkForm.addRule('geo')">
+                <mat-icon svgIcon="add"></mat-icon>
+            </button>
+        </header>
+        <ul class="unstyled-list">
+            <li class="inline-inputs-container rule-inline-inputs" *ngFor="let group of linkForm.geoRules().controls; let i = index;">
+                <div class="input-container country-input-container" [formGroup]="group">
+                    <label [for]="'link_dialog_country-' + i" trans>Country</label>
+                    <select [id]="'link_dialog_country-' + i" formControlName="key">
+                        <option [value]="country.code" *ngFor="let country of linkOptions.countries">{{country.name}}</option>
+                    </select>
+                </div>
+
+                <div class="input-container" [formGroup]="group">
+                    <label [for]="'link_dialog_geo_url-' + i" trans>Url</label>
+                    <input type="url" [id]="'link_dialog_geo_url-' + i" formControlName="value">
+                </div>
+
+                <button mat-icon-button color="warn" type="button" class="remove-rule-btn" (click)="linkForm.removeRule('geo', i)">
+                    <mat-icon svgIcon="close"></mat-icon>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="group" *ngIf="settings.get('links.device_targeting')">
+        <header>
+            <div class="header-text">
+                <h3 trans>Device Targeting</h3>
+                <p trans>Redirect users to different urls based on their device.</p>
+            </div>
+            <button mat-icon-button color="accent" type="button" (click)="linkForm.addRule('device')">
+                <mat-icon svgIcon="add"></mat-icon>
+            </button>
+        </header>
+        <ul class="unstyled-list">
+            <li class="inline-inputs-container rule-inline-inputs" *ngFor="let group of linkForm.deviceRules().controls; let i = index;">
+                <div class="input-container device-input-container" [formGroup]="group">
+                    <label [for]="'link_dialog_device-' + i" trans>Device</label>
+                    <select [id]="'link_dialog_device-' + i" formControlName="key">
+                        <option value="desktop" trans>Desktop</option>
+                        <option value="tablet" trans>Tablet</option>
+                        <option value="mobile" trans>Mobile</option>
+                    </select>
+                </div>
+
+                <div class="input-container" [formGroup]="group">
+                    <label [for]="'link_dialog_device_url-' + i" trans>Url</label>
+                    <input type="url" [id]="'link_dialog_device_url-' + i" formControlName="value">
+                </div>
+
+                <button mat-icon-button type="button" color="warn" class="remove-rule-btn" (click)="linkForm.removeRule('device', i)">
+                    <mat-icon svgIcon="close"></mat-icon>
+                </button>
+            </li>
+        </ul>
+    </div>
+</ng-container>

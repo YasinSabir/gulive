@@ -1,0 +1,132 @@
+<div class="header">
+    <div class="title" trans>Links</div>
+    <div class="subtitle" trans>Configure various link behaviour across the site.</div>
+</div>
+
+<form class="body" (ngSubmit)="saveSettings()" ngNativeValidate>
+    <mat-tab-group color="accent" animationDuration="0">
+        <mat-tab [label]="'Behaviour' | trans">
+            <div class="many-inputs">
+                <div class="error-group">
+                    <div class="setting-toggle-container">
+                        <mat-slide-toggle name="links.enable_type" id="links.enable_type" [(ngModel)]="state.client['links.enable_type']" trans>Type Selection</mat-slide-toggle>
+                        <p trans>Whether user should be able to change type when creating or updating links.</p>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="links.default_type" trans>Default Link Type</label>
+                        <select name="links.default_type" id="links.default_type" [(ngModel)]="state.client['links.default_type']">
+                            <option value="direct" trans>Direct</option>
+                            <option value="frame" trans>Frame</option>
+                            <option value="splash" trans>Splash</option>
+                        </select>
+                        <p trans>What type should newly created types have by default (If user did not manually select type).</p>
+                    </div>
+
+                    <div class="inline-inputs-container">
+                        <div class="input-container">
+                            <label for="links.alias_min" trans>Alias Min Length</label>
+                            <input type="number" id="links.alias_min" name="links.alias_min" [(ngModel)]="state.client['links.alias_min']" min="1" required>
+                        </div>
+
+                        <div class="input-container">
+                            <label for="links.alias_max" trans>Alias Max Length</label>
+                            <input type="number" id="links.alias_max" name="links.alias_max" [(ngModel)]="state.client['links.alias_max']" min="1" max="50" required>
+                        </div>
+                    </div>
+                    <p class="inline-inputs-description" trans>Specify minimum and maximum length for custom link alias.</p>
+                </div>
+
+                <div class="input-container">
+                    <label for="links.redirect_time" trans>Splash Page Redirect Time</label>
+                    <input type="number" name="links.redirect_time" id="links.redirect_time" [(ngModel)]="state.client['links.redirect_time']" min="0" max="60">
+                    <p trans>After how many seconds should user be redirect to their destination on splash page. In Seconds. 0 will disable automatic redirection.</p>
+                </div>
+
+                <div class="error-group">
+                    <div class="setting-toggle-container">
+                        <mat-slide-toggle name="links.geo_targeting" id="links.geo_targeting" [(ngModel)]="state.client['links.geo_targeting']" trans>Enable Geotargeting</mat-slide-toggle>
+                        <p trans>Whether redirection based on country functionality is enabled.</p>
+                    </div>
+
+                    <div class="setting-toggle-container">
+                        <mat-slide-toggle name="links.device_targeting" id="links.device_targeting" [(ngModel)]="state.client['links.device_targeting']" trans>Enable Device Targeting</mat-slide-toggle>
+                        <p trans>Whether redirection based on device functionality is enabled.</p>
+                    </div>
+
+                    <div class="setting-toggle-container">
+                        <mat-slide-toggle name="links.pixels" id="links.pixels" [(ngModel)]="state.client['links.pixels']" trans>Enable Tracking Pixels</mat-slide-toggle>
+                        <p trans>Whether user should be able to apply tracking pixels to links.</p>
+                    </div>
+                </div>
+
+                <div class="setting-toggle-container">
+                    <mat-slide-toggle name="links.homepage_creation" id="links.homepage_creation" [(ngModel)]="state.client['links.homepage_creation']" trans>Homepage Link Creation</mat-slide-toggle>
+                    <p trans>Whether non-logged in users can shorten links on homepage.</p>
+                </div>
+
+                <div class="setting-toggle-container">
+                    <mat-slide-toggle name="links.homepage_stats" id="links.homepage_stats" [(ngModel)]="state.client['links.homepage_stats']" trans>Show Homepage Stats</mat-slide-toggle>
+                    <p trans>Whether statistics about about number of links, clicks and users should be displayed on homepage.</p>
+                </div>
+
+                <div class="input-container">
+                    <label for="links.gchart_api_key" trans>Google Maps Javascript API Key</label>
+                    <input type="text" name="links.gchart_api_key" id="links.gchart_api_key" [(ngModel)]="state.client['links.gchart_api_key']">
+                    <p trans>Required in order to show world geochart on link and group report pages.</p>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab [label]="'Security' | trans">
+           <div class="many-inputs security-tab">
+               <div class="error-group many-inputs">
+                   <div class="input-container">
+                       <label for="links.blacklist.keywords" trans>Blacklist Keywords</label>
+                       <textarea name="links.blacklist.keywords" id="links.blacklist.keywords" [(ngModel)]="state.client['links.blacklist.keywords']"></textarea>
+                       <p trans>Comma separated list of keywords. User will not be able to shorten any URLs that contain specified keywords.</p>
+                   </div>
+
+                   <div class="input-container">
+                       <label for="links.blacklist.domains" trans>Blacklist Domains</label>
+                       <textarea name="links.blacklist.domains" id="links.blacklist.domains" [(ngModel)]="state.client['links.blacklist.domains']"></textarea>
+                       <p trans>Comma separated domain list (domain1.com, domain2.com etc.). User will not be able to shorten any URLs from specified domains.</p>
+                   </div>
+               </div>
+
+               <div class="input-container">
+                   <label for="links.google_safe_browsing_key" trans>Google Safe Browsing API Key</label>
+                   <input type="text" name="links.google_safe_browsing_key" id="links.google_safe_browsing_key" [(ngModel)]="state.client['links.google_safe_browsing_key']">
+                   <p trans>Entering this API key will prevent urls that are considered unsafe by google from being shortened.</p>
+               </div>
+
+               <div class="input-container">
+                   <label for="links.phishtank_key" trans>Phishtank API Key</label>
+                   <input type="text" name="links.phishtank_key" id="links.phishtank_key" [(ngModel)]="state.client['links.phishtank_key']">
+                   <p trans>Entering this API key will prevent urls that are considered unsafe by Phishtank from being shortened.</p>
+               </div>
+           </div>
+        </mat-tab>
+
+        <mat-tab [label]="'Domains' | trans">
+            <div class="error-group">
+                <div class="input-container default-domain-input-container">
+                    <label for="custom-domains-default-host" trans>Default Domain</label>
+                    <select id="custom-domains-default-host" name="custom-domains-default-host" [(ngModel)]="state.client['custom_domains.default_host']">
+                        <option [value]="''">{{defaultDomain}}</option>
+                        <option [value]="domain.host" *ngFor="let domain of customDomains$ | async">{{domain.host}}</option>
+                    </select>
+                    <p trans>Which domain should be used by default for links.</p>
+                </div>
+
+                <div class="setting-toggle-container margin-top">
+                    <mat-slide-toggle id="custom-domains-allow-select" name="custom-domains-allow-select" [(ngModel)]="state.client['custom_domains.allow_select']" trans>Allow Domain Selection</mat-slide-toggle>
+                    <p trans>Allow users to select which domain they want to use for each link.</p>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+    <button mat-raised-button color="accent" class="button primary update-button" type="submit" [disabled]="loading$ | async" trans>Update</button>
+    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="loading$ | async"></mat-progress-bar>
+</form>

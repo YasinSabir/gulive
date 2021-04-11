@@ -1,0 +1,30 @@
+<mat-menu #rootMenu>
+    <div mat-menu-item class="multiline-mat-menu-item" (click)="selectValue('direct')" [class.active]="value === 'direct'">
+        <div class="title" trans>Direct</div>
+        <div class="description" trans>Redirect user to url instantly.</div>
+    </div>
+    <div mat-menu-item class="multiline-mat-menu-item" (click)="selectValue('frame')" [class.active]="value === 'frame'">
+        <div class="title" trans>Frame</div>
+        <div class="description" trans [transValues]="{siteName: settings.get('branding.site_name')}">Show url inside iframe with :siteName navigation bar.</div>
+    </div>
+    <div mat-menu-item class="multiline-mat-menu-item" (click)="selectValue('splash')" [class.active]="value === 'splash'">
+        <div class="title" trans>Splash</div>
+        <div class="description" trans>Show splash page with optional ads and redirect user to url after a delay.</div>
+    </div>
+    <div mat-menu-item class="multiline-mat-menu-item" [matMenuTriggerFor]="customPagesMenu" [class.hidden]="!linkOptions?.pages.length" [class.active]="value.includes('page')">
+        <div class="title" trans>Link Page</div>
+        <div class="description" [transValues]="{siteName: settings.get('branding.site_name')}" trans>Show specified link page with :siteName navigation bar and button to open long url.</div>
+    </div>
+    <div mat-menu-item class="multiline-mat-menu-item" [matMenuTriggerFor]="overlayMenu" [class.hidden]="!linkOptions?.overlays.length" [class.active]="value.includes('overlay')">
+        <div class="title" trans>Overlay</div>
+        <div class="description" trans>Redirect user instantly and show specified overlay over the link.</div>
+    </div>
+</mat-menu>
+
+<mat-menu #customPagesMenu>
+    <button mat-menu-item *ngFor="let page of linkOptions?.pages" (click)="selectValue('page:' + page.id)" [class.active]="value === 'page:' + page.id">{{page.title}}</button>
+</mat-menu>
+
+<mat-menu #overlayMenu>
+    <button mat-menu-item *ngFor="let overlay of linkOptions?.overlays"  (click)="selectValue('overlay:' + overlay.id)" [class.active]="value === 'overlay:' + overlay.id">{{overlay.name}}</button>
+</mat-menu>

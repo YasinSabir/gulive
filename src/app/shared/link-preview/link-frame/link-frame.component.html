@@ -1,0 +1,9 @@
+<material-navbar [showToggleButton]="false" [hideRightSideActions]="true" *ngIf="link.type === 'frame'">
+    <share-link-btns class="push-right" [link]="link" [showCopyBtn]="true"></share-link-btns>
+</material-navbar>
+
+<ad-host slot="ads.frame.top"></ad-host>
+
+<link-overlay *ngIf="link.type === 'overlay'" [overlay]="link.custom_page"></link-overlay>
+
+<iframe [src]="safeUrl" [class.full-height]="link.type === 'overlay'"></iframe>

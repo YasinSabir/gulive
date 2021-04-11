@@ -1,0 +1,18 @@
+{
+  "/secure": {
+    "target": "https://localhost/gulive",
+    "secure": false
+  },
+  "/storage": {
+    "target": "https://localhost/gulive/",
+    "secure": false
+  },
+  "/client": {
+    "target": "https://localhost/gulive/",
+    "secure": false
+  },
+  "/__clockwork": {
+    "target": "https://localhost/gulive/public",
+    "secure": false
+  }
+}

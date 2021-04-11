@@ -1,0 +1,43 @@
+<div class="datatable responsive-table">
+    <datatable-header pluralResourceName="tracking pixels">
+        <ng-container leftContent>
+            <button mat-raised-button color="accent" (click)="showCrupdatePixelModal()" permissionAwareButton="tracking_pixels.create" trans>Add</button>
+        </ng-container>
+        <button mat-raised-button color="accent" permissionAwareButton="tracking_pixels.delete" rightContent (click)="maybeDeleteSelectedPixels()" trans>Delete Selected</button>
+    </datatable-header>
+    <table class="material-table">
+        <thead>
+        <tr>
+            <th table-header-checkbox></th>
+            <th table-sort-header trans>Name</th>
+            <th *ngIf="showUserColumn()" table-sort-header trans>Owner</th>
+            <th table-sort-header trans>Type</th>
+            <th trans>Pixel ID</th>
+            <th trans>Last Updated</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pixel of pixels$ | async">
+            <td [table-body-checkbox]="pixel.id"></td>
+            <td data-label="Name">{{pixel.name}}</td>
+            <td data-label="Owner" *ngIf="showUserColumn()">
+                <user-column [user]="pixel.user"></user-column>
+            </td>
+            <td data-label="Type">{{pixel.type}}</td>
+            <td data-label="Pixel ID">{{pixel.pixel_id}}</td>
+            <td data-label="Last Updated">{{pixel.updated_at | formattedDate}}</td>
+            <td class="edit-column">
+                <button mat-icon-button permissionAwareButton="tracking_pixels.update" [resource]="pixel" (click)="showCrupdatePixelModal(pixel)" [matTooltip]="'Edit tracking pixel' | trans">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <no-results-message svgImage="location-tracking.svg" *ngIf="datatable.paginator.noResults$ | async">
+        <span primary-text>No tracking pixels have been created yet</span>
+    </no-results-message>
+    <datatable-footer></datatable-footer>
+</div>
+

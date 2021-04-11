@@ -1,0 +1,49 @@
+<div class="datatable responsive-table">
+    <datatable-header pluralResourceName="link overlays">
+        <ng-container leftContent>
+            <button routerLink="new" mat-raised-button permissionAwareButton="link_overlays.create" color="accent" trans>New Overlay</button>
+            <info-popover>
+                <span trans>Display fully customizable overlay with a message and call-to-action button over destination website.</span>
+            </info-popover>
+        </ng-container>
+        <button rightContent permissionAwareButton="link_overlays.delete" mat-raised-button color="accent" (click)="maybeDeleteSelectedOverlays()" trans>Delete Selected</button>
+    </datatable-header>
+    <table class="material-table">
+        <thead>
+        <tr>
+            <th table-header-checkbox></th>
+            <th table-sort-header trans>Name</th>
+            <th *ngIf="showUserColumn()" trans>Owner</th>
+            <th table-sort-header="clicks_count">Message</th>
+            <th trans>Action</th>
+            <th trans>Color</th>
+            <th trans>Last Updated</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let overlay of overlays$ | async">
+            <td [table-body-checkbox]="overlay.id"></td>
+            <td data-label="Name">{{overlay.name}}</td>
+            <td data-label="Owner" *ngIf="showUserColumn()">
+                <user-column [user]="overlay.user"></user-column>
+            </td>
+            <td data-label="Message">{{overlay.message}}</td>
+            <td data-label="Action">{{overlay.btn_text}}</td>
+            <td data-label="Color">
+                <mat-icon svgIcon="drop-custom" class="color-icon" [style.color]="overlay.colors['bg-color']"></mat-icon>
+            </td>
+            <td data-label="Last Updated">{{overlay.updated_at | formattedDate}}</td>
+            <td class="edit-column">
+                <button [routerLink]="['edit', overlay.id]" mat-icon-button permissionAwareButton="link_overlays.update" [resource]="overlay" [matTooltip]="'Edit overlay' | trans">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <no-results-message svgImage="popular.svg" *ngIf="datatable.paginator.noResults$ | async">
+        <span primary-text>No link overlays have been created yet</span>
+    </no-results-message>
+    <datatable-footer></datatable-footer>
+</div>

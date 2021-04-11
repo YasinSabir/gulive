@@ -1,0 +1,15 @@
+@import "variables";
+
+.error-group:first-of-type {
+  border-top: none;
+}
+
+.default-domain-input-container select {
+  text-transform: none;
+}
+
+.inline-inputs-description {
+    color: mat-color($app-foreground, secondary-text);
+    font-size: 13px;
+    margin-bottom: 25px;
+}

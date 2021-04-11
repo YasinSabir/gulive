@@ -1,0 +1,46 @@
+<table class="material-table">
+    <thead>
+    <tr>
+        <th table-header-checkbox></th>
+        <th trans>Summary</th>
+        <ng-container *ngIf="showOwnerColumn">
+            <th table-sort-header="user_id" trans>Owner</th>
+        </ng-container>
+        <th table-sort-header="clicks_count">Clicks</th>
+        <th table-sort-header trans>Type</th>
+        <th table-sort-header trans>Password</th>
+        <th table-sort-header="expires_at" trans>Expires At</th>
+        <th table-sort-header="updated_at" trans>Last Updated</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let link of links">
+        <td [table-body-checkbox]="link.id"></td>
+        <td class="link-summary-column mobile-no-label">
+            <a class="long-url" [href]="link.long_url" target="_blank">
+                <img class="favicon-img" [src]="link.long_url | favicon" alt="Link favicon">
+                <span>{{link.long_url | removeProtocol | slice:0:50}}</span>
+            </a>
+            <div class="short-url">
+                <a [href]="link.short_url" target="_blank">{{decodeURL_(link.short_url)}}</a>
+            </div>
+        </td>
+        <td data-label="Owner" *ngIf="showOwnerColumn">
+            <user-column [user]="link.user"></user-column>
+        </td>
+        <td data-label="Clicks">{{link.clicks_count}}</td>
+        <td data-label="Type" class="capitalize">{{link.type}}</td>
+        <td data-label="Password">{{(link.has_password ? 'Yes' : 'No') | trans}}</td>
+        <td data-label="Expires At">{{ link.deleted_at ? ('Expired' | trans) : (link.expires_at ? (link.expires_at | formattedDate) : '-') }}</td>
+        <td data-label="Last Updated">{{link.updated_at | formattedDate}}</td>
+        <td class="edit-column">
+            <a mat-icon-button [routerLink]="['/', getParentRoute(), 'links', link.id]" [matTooltip]="'Link Statistics' | trans">
+                <mat-icon svgIcon="visibility"></mat-icon>
+            </a>
+            <copy-link-btn [model]="link"></copy-link-btn>
+            <ng-container *ngTemplateOutlet="editButtonTemplate; context: {link: link}"></ng-container>
+        </td>
+    </tr>
+    </tbody>
+</table>

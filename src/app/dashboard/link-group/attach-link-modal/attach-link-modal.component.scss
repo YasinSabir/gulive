@@ -1,0 +1,59 @@
+@import "variables";
+
+:host {
+    display: block;
+    width: 450px;
+    max-width: 100%;
+
+    .modal-header {
+        margin-bottom: 15px;
+    }
+
+    .input-container {
+        width: 100%;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    loading-indicator {
+        top: 12px;
+        right: 12px;
+    }
+
+    .link {
+        display: flex;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        &:hover .overflow-hidden {
+            color: mat-color($app-primary, default);
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+            margin-right: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .long-url {
+            color: mat-color($app-foreground, text);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .short-url {
+            color: mat-color($app-foreground, secondary-text);
+            font-size: 1.3rem;
+
+        }
+    }
+
+    .overflow-hidden {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

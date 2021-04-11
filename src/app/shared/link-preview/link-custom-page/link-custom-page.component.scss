@@ -1,0 +1,9 @@
+@import "variables";
+
+custom-page {
+  min-height: calc(100vh - #{$material-navbar-height});
+}
+
+.ads-page-top-host {
+  margin-top: 35px;
+}
